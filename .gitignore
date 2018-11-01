@@ -13,7 +13,7 @@ tomcat
 *.dmg
 *.gz
 *.iso
-*.jar
+#*.jar - Comentado pra sincronizar as libs
 *.rar
 *.tar
 *.zip
