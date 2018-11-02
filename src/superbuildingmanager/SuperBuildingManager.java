@@ -24,37 +24,56 @@ public class SuperBuildingManager {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
         
+        //conecta no banco
         DBManager.getInstance().connect();
         
-        JFrame jFrame = new JFrame("Super Building Manager");
-        //jFrame.setLayout(new GridLayout(1,0));
-        jFrame.setSize(500, 500);        
+        /****** cria telas do aplicativo *******/
         
+        //incluir aqui ao criar uma tela nova
         Login loginPanel = new Login();
-        Menu menuPanel = new Menu();
-       
-        //loginPanel.setLayout(new GridLayout(1, 0));
-        //menuPanel.setLayout(new GridLayout(1, 0));
+        MainMenu menuPanel = new MainMenu();
         
-        loginPanel.setSize(500, 500);
-        menuPanel.setSize(500, 500);
+        //define as tags pro gerenciador de navegacao
+        loginPanel.setTAG("Login");
+        menuPanel.setTAG("MainMenu");
+     
+        /****** cria janela principal onde vão ser abertas as telas *******/
         
+        JFrame jFrame = new JFrame("Super Building Manager");
         
-        loginPanel.setVisible(true);
-        menuPanel.setVisible(false);
+        //define tamanho inicial da janela
+        jFrame.setSize(1024, 768);  
         
+      
+        //adiciona as telas na janela principal
+        //incluir aqui ao criar uma tela nova
         jFrame.add(loginPanel);
         jFrame.add(menuPanel);
         
-        //Ajusta automaticamente o tamanho da janela, alternativa ao setSize()
-        //jFrame.pack();
+        
+        /****** cria gerenciador de navegacao *******/
+        
+        //cria gerenciador de navegacao
+        Router router = Router.getInstance();
+        router.setWidthJanela(jFrame.getWidth());
+        router.setHeightJanela(jFrame.getHeight());
+        
+        //adiciona telas ao gerenciador de navegacao
+        //incluir aqui ao criar uma tela nova
+        router.addJPanel(loginPanel);
+        router.addJPanel(menuPanel);
+        
+        //abre a tela de login primeiro
+        router.abrir("Login");
 
         //Centraliza a janela
         jFrame.setLocationRelativeTo(null);
-
+        
+        //sinaliza pro programa ser encerrado quando fechar a janela principal
         jFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        
+        //faz a janela principal visível
         jFrame.setVisible(true);
         
     }

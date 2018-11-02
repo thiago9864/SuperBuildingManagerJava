@@ -18,6 +18,8 @@ import java.sql.Statement;
 /**
  *
  * @author thiagoalmeida
+ * Classe construida com padrão Singleton
+ * Info: https://www.devmedia.com.br/padrao-de-projeto-singleton-em-java/26392
  */
 public class DBManager {
     
@@ -38,10 +40,12 @@ public class DBManager {
     
     /**
      * Connect to a sample database
-     * http://www.sqlitetutorial.net/sqlite-java/sqlite-jdbc-driver/
-     * https://github.com/tatsushid/mysql-wb-exportsqlite
      */
     public void connect() {
+        
+        //http://www.sqlitetutorial.net/sqlite-java/sqlite-jdbc-driver/
+        //https://github.com/tatsushid/mysql-wb-exportsqlite
+        
         Statement statement = null;
         String url = "jdbc:sqlite:sbm.db";
  
@@ -50,10 +54,11 @@ public class DBManager {
             conn = DriverManager.getConnection(url);
             
             if (conn != null) {
+                
                 //checa se tabelas já foram criadas
                 statement = conn.createStatement();
                 ResultSet rs = statement.executeQuery(
-                        "SELECT name FROM sqlite_master WHERE name='sindico'"
+                    "SELECT name FROM sqlite_master WHERE name='sindico'"
                 );
                 String name = "";
                 if(!rs.isClosed()){
@@ -70,6 +75,7 @@ public class DBManager {
                 } else {
                     System.out.println("A database already exists.");
                 }
+                
             }
             
         } catch (IOException e) {
@@ -79,6 +85,9 @@ public class DBManager {
         } 
     }
     
+    /**
+     * Metodo pra fechar a conexão com o banco
+     */
     public void closeConnection(){
         try {
             if (conn != null) {
@@ -89,11 +98,16 @@ public class DBManager {
         }
     }
     
-    /*
-    https://codippa.com/how-to-execute-a-database-script-in-java/
-    */
+    
+    /**
+     * Metodo pra criar a estrutura do banco no arquivo SQLite vazio
+     * @throws IOException
+     * @throws SQLException 
+     */
     private void executarScriptInstalacao() throws IOException, SQLException {
 	Statement statement = null;
+        
+        //https://codippa.com/how-to-execute-a-database-script-in-java/
         
 	try {
                 // create statement object
@@ -112,10 +126,7 @@ public class DBManager {
                 
                 file = file.replace("\n", "");
                 String[] arr_statements = file.split(";");
-                
-                //System.out.println(file);
-                //System.out.println(arr_statements);
-                
+               
                 for(int i=0; i < arr_statements.length; i++){
                     String stm = arr_statements[i];
                     statement.execute(stm);
@@ -135,25 +146,32 @@ public class DBManager {
 	}
    }
     
+   /**
+    * Obtem a conexão com o banco
+    * @return Connection
+    */ 
    public Connection getConnection(){
        return conn;
    }
     
-   
-   /**
-     * select all rows in the warehouses table
-     * http://www.sqlitetutorial.net/sqlite-java/select/
+
+    /**
+     * Metodo pra checar se os dados de login são válidos
+     * @param usuario
+     * @param senha
+     * @return boolean
      */
     public boolean checarCredenciais(String usuario, String senha){
+        
+        //http://www.sqlitetutorial.net/sqlite-java/select/
         
         String sql = "SELECT * FROM sindico WHERE usuario='"+usuario+"' AND senha='" + senha + "'";
         boolean resultado = false;
         Statement stmt = null;
         
-
         try {
              stmt  = conn.createStatement();
-             System.out.println("SQL: " + sql);
+             //System.out.println("SQL: " + sql);
              ResultSet rs = stmt.executeQuery(sql);
             
             // loop through the result set

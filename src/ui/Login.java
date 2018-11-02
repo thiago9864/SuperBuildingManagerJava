@@ -5,6 +5,7 @@
  */
 package ui;
 
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import sqlite.DBManager;
 
@@ -12,10 +13,11 @@ import sqlite.DBManager;
  *
  * @author thiagoalmeida
  */
-public class Login extends javax.swing.JPanel {
+public class Login extends CustomJPanel {
 
+    
     /**
-     * Creates new form NewJPanel
+     * Creates new form Login
      */
     public Login() {
         initComponents();
@@ -46,6 +48,11 @@ public class Login extends javax.swing.JPanel {
         jLabel2.setText("Senha:");
 
         jTextField1.setName("txtLogin"); // NOI18N
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField1KeyPressed(evt);
+            }
+        });
 
         jButton1.setText("Entrar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -54,8 +61,17 @@ public class Login extends javax.swing.JPanel {
             }
         });
 
-        jPasswordField1.setText("jPasswordField1");
         jPasswordField1.setName("txtSenha"); // NOI18N
+        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordField1ActionPerformed(evt);
+            }
+        });
+        jPasswordField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jPasswordField1KeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -92,6 +108,10 @@ public class Login extends javax.swing.JPanel {
                 .addComponent(jButton1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jTextField1.getAccessibleContext().setAccessibleName("txtLogin");
+        jButton1.getAccessibleContext().setAccessibleName("btnEntrar");
+        jPasswordField1.getAccessibleContext().setAccessibleName("txtSenha");
 
         jPanel2.setAlignmentX(0.2F);
         jPanel2.setAlignmentY(0.2F);
@@ -138,34 +158,29 @@ public class Login extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-
-        
-        String usuario = jTextField1.getText();
-        char[] arr_senha = jPasswordField1.getPassword();
-        
-        String senha = String.valueOf(arr_senha);
-        
-        System.out.println(usuario);
-        System.out.println(senha);
-        
-        boolean check = DBManager.getInstance().checarCredenciais(
-                usuario, 
-                senha
-        );
-        if(check){
-            //esta logado
-            System.out.println("logado");
-        } else {
-            //mensagem de erro
-            //https://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html
-            JOptionPane.showMessageDialog(this,
-                "Usuario ou senha incorretos",
-                "Erro",
-                JOptionPane.ERROR_MESSAGE);
-                    }
+        checarLogin();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordField1ActionPerformed
 
+    private void jPasswordField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordField1KeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            // Enter was pressed. Your code goes here.
+            checarLogin();
+        }
+    }//GEN-LAST:event_jPasswordField1KeyPressed
+
+    private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            // Enter was pressed. Your code goes here.
+            checarLogin();
+        }
+    }//GEN-LAST:event_jTextField1KeyPressed
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
@@ -176,4 +191,42 @@ public class Login extends javax.swing.JPanel {
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
+
+    /******** Metodos do programa *********/
+    
+    private void checarLogin(){
+        String usuario = jTextField1.getText();
+        char[] arr_senha = jPasswordField1.getPassword();
+        
+        //se algum campo estiver vazio, nem checa o login
+        if(usuario.isEmpty() || arr_senha.length == 0){
+            return;
+        }
+        
+        //converte a senha pra string
+        String senha = String.valueOf(arr_senha);
+        
+        //acessa o banco
+        boolean check = DBManager.getInstance().checarCredenciais(
+                usuario, 
+                senha
+        );
+        
+        if(check){
+            //esta logado
+            //muda pra tela MainMenu
+            Router.getInstance().abrir("MainMenu");
+        } else {
+            //login ou senha errados
+            //mensagem de erro
+            //https://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html
+            JOptionPane.showMessageDialog(
+                this,
+                "Usuario ou senha incorretos",
+                "Erro",
+                JOptionPane.ERROR_MESSAGE
+            );
+        }
+    }
+    
 }
