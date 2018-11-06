@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ui;
+package gui;
 import javax.swing.JPanel;
 
 /**
@@ -23,4 +23,7 @@ public class CustomJPanel extends JPanel {
         this.TAG = TAG;
     }
     
+    public boolean compareTag(String TAG){
+        return this.TAG.toUpperCase().equals(TAG.toUpperCase());
+    }
 }

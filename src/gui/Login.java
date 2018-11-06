@@ -3,18 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ui;
+package gui;
 
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import javax.swing.JOptionPane;
-import sqlite.DBManager;
+import persistencia.FactoryConnection;
 
 /**
  *
  * @author thiagoalmeida
  */
 public class Login extends CustomJPanel {
-
     
     /**
      * Creates new form Login
@@ -158,7 +159,6 @@ public class Login extends CustomJPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        checarLogin();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
@@ -166,19 +166,11 @@ public class Login extends CustomJPanel {
     }//GEN-LAST:event_jPasswordField1ActionPerformed
 
     private void jPasswordField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordField1KeyPressed
-        // TODO add your handling code here:
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            // Enter was pressed. Your code goes here.
-            checarLogin();
-        }
+        // TODO add your handling code here
     }//GEN-LAST:event_jPasswordField1KeyPressed
 
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
-        // TODO add your handling code here:
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            // Enter was pressed. Your code goes here.
-            checarLogin();
-        }
+        // TODO add your handling code here:        
     }//GEN-LAST:event_jTextField1KeyPressed
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -194,39 +186,36 @@ public class Login extends CustomJPanel {
 
     /******** Metodos do programa *********/
     
-    private void checarLogin(){
-        String usuario = jTextField1.getText();
-        char[] arr_senha = jPasswordField1.getPassword();
-        
-        //se algum campo estiver vazio, nem checa o login
-        if(usuario.isEmpty() || arr_senha.length == 0){
-            return;
-        }
-        
-        //converte a senha pra string
-        String senha = String.valueOf(arr_senha);
-        
-        //acessa o banco
-        boolean check = DBManager.getInstance().checarCredenciais(
-                usuario, 
-                senha
-        );
-        
-        if(check){
-            //esta logado
-            //muda pra tela MainMenu
-            Router.getInstance().abrir("MainMenu");
-        } else {
-            //login ou senha errados
-            //mensagem de erro
-            //https://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html
-            JOptionPane.showMessageDialog(
+    public void addActionListener(ActionListener listener){
+        this.jButton1.addActionListener(listener);
+    }
+    
+    public void addKeyListener(KeyListener listener){
+        this.jTextField1.addKeyListener(listener);
+        this.jPasswordField1.addKeyListener(listener);
+    }
+    
+    public javax.swing.JTextField getTxtLogin(){
+        return this.jTextField1;
+    }
+    
+    public javax.swing.JPasswordField getTxtSenha(){
+        return this.jPasswordField1;
+    }
+    
+    public javax.swing.JButton getBtnEntrar(){
+        return this.jButton1;
+    }
+    
+    public void criarMensagemErro(String titulo, String mensagem){
+
+        //https://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html
+        JOptionPane.showMessageDialog(
                 this,
-                "Usuario ou senha incorretos",
-                "Erro",
+                mensagem,
+                titulo,
                 JOptionPane.ERROR_MESSAGE
             );
-        }
     }
     
 }

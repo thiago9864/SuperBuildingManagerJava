@@ -3,11 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ui;
+package gui;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
+import javax.swing.JFrame;
 
 /**
  *
@@ -25,6 +26,7 @@ public class Router {
     private ArrayList<CustomJPanel> jpanelList = new ArrayList<>();
     private int widthJanela = 1024, heightJanela = 768;
     private Stack<CustomJPanel> pilha = new Stack<>();
+    private JFrame jFrame;
     
     private Router(){}
     
@@ -51,8 +53,28 @@ public class Router {
     public void setHeightJanela(int heightJanela) {
         this.heightJanela = heightJanela;
     }
+
+    public void setjFrame(JFrame jFrame) {
+        this.jFrame = jFrame;
+    }
     
+    
+    
+    /**
+     * Função que adiciona uma GUI ao gerenciador de navegação
+     * Não permite adicionar duas vezes a mesma GUI
+     * @param painel (a GUI)
+     */
     public void addJPanel(CustomJPanel painel){
+        
+        for(CustomJPanel p : jpanelList){
+            if(p.compareTag(painel.getTAG())){
+                System.out.println("Não é permitido adicionar duas vezes a mesma gui");
+                return;
+            }
+        }
+        
+        jFrame.add(painel);
         jpanelList.add(painel);
     }
     
@@ -60,18 +82,18 @@ public class Router {
      * Função que chamada, abre uma tela pelo nome da tela
      * @param tag 
      */
-    public void abrir(String tag){
-        for(CustomJPanel painel : jpanelList){
+    public void abrir(String TAG){
+        for(CustomJPanel p : jpanelList){
             //mantem dimensoes dos paineis a mesma da janela principal
-            painel.setSize(widthJanela, heightJanela);
+            p.setSize(widthJanela, heightJanela);
             
             //procura painel com a mesma tag e faz ele visivel
-            if(painel.getTAG().equals(tag)){
-                painel.setVisible(true);
+            if(p.compareTag(TAG)){
+                p.setVisible(true);
                 //adiciona na pilha a janela aberta
-                pilha.add(painel);
+                pilha.add(p);
             } else {
-                painel.setVisible(false);
+                p.setVisible(false);
             }
         }
     }

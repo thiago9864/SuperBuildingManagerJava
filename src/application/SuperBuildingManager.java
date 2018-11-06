@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package superbuildingmanager;
+package application;
 
+import controller.*;
+import gui.Router;
 import javax.swing.JFrame;
-import sqlite.DBManager;
-import ui.*;
 
 /**
  *
@@ -24,32 +24,13 @@ public class SuperBuildingManager {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
-        //conecta no banco
-        DBManager.getInstance().connect();
-        
-        /****** cria telas do aplicativo *******/
-        
-        //incluir aqui ao criar uma tela nova
-        Login loginPanel = new Login();
-        MainMenu menuPanel = new MainMenu();
-        
-        //define as tags pro gerenciador de navegacao
-        loginPanel.setTAG("Login");
-        menuPanel.setTAG("MainMenu");
-     
-        /****** cria janela principal onde vão ser abertas as telas *******/
+       
+        /****** cria janela principal onde vão ser abertas as gui *******/
         
         JFrame jFrame = new JFrame("Super Building Manager");
         
         //define tamanho inicial da janela
         jFrame.setSize(1024, 768);  
-        
-      
-        //adiciona as telas na janela principal
-        //incluir aqui ao criar uma tela nova
-        jFrame.add(loginPanel);
-        jFrame.add(menuPanel);
         
         
         /****** cria gerenciador de navegacao *******/
@@ -58,11 +39,13 @@ public class SuperBuildingManager {
         Router router = Router.getInstance();
         router.setWidthJanela(jFrame.getWidth());
         router.setHeightJanela(jFrame.getHeight());
+        router.setjFrame(jFrame);
         
-        //adiciona telas ao gerenciador de navegacao
-        //incluir aqui ao criar uma tela nova
-        router.addJPanel(loginPanel);
-        router.addJPanel(menuPanel);
+        /****** instancia controllers do aplicativo *******/
+        
+        LoginController loginController = new LoginController();
+        MainMenuController mainMenuController = new MainMenuController();
+       
         
         //abre a tela de login primeiro
         router.abrir("Login");
@@ -74,8 +57,7 @@ public class SuperBuildingManager {
         jFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         
         //faz a janela principal visível
-        jFrame.setVisible(true);
-        
+        jFrame.setVisible(true);        
     }
     
 }

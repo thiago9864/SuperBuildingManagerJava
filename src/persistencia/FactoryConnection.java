@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sqlite;
+package persistencia;
 
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
@@ -18,30 +18,20 @@ import java.sql.Statement;
 /**
  *
  * @author thiagoalmeida
- * Classe construida com padrão Singleton
- * Info: https://www.devmedia.com.br/padrao-de-projeto-singleton-em-java/26392
  */
-public class DBManager {
+public class FactoryConnection {
     
-    private static DBManager instance;
     private Connection conn = null;
     private String scriptFilePath = "modelo_banco.sql";
     private BufferedReader reader = null;
         
-    private DBManager(){}
-    
-    public static DBManager getInstance(){
-        if(instance == null){
-            instance = new DBManager();
-        }
-        
-        return instance;
-    }
+    public FactoryConnection(){}
     
     /**
-     * Connect to a sample database
-     */
-    public void connect() {
+    * Obtem a conexão com o banco
+    * @return Connection
+    */ 
+    public Connection getConnection(){
         
         //http://www.sqlitetutorial.net/sqlite-java/sqlite-jdbc-driver/
         //https://github.com/tatsushid/mysql-wb-exportsqlite
@@ -83,6 +73,8 @@ public class DBManager {
         } catch (SQLException e) {
             System.out.println("SQLException: " + e.getMessage());
         } 
+    
+       return conn;
     }
     
     /**
@@ -98,7 +90,7 @@ public class DBManager {
         }
     }
     
-    
+
     /**
      * Metodo pra criar a estrutura do banco no arquivo SQLite vazio
      * @throws IOException
@@ -146,56 +138,4 @@ public class DBManager {
 	}
    }
     
-   /**
-    * Obtem a conexão com o banco
-    * @return Connection
-    */ 
-   public Connection getConnection(){
-       return conn;
-   }
-    
-
-    /**
-     * Metodo pra checar se os dados de login são válidos
-     * @param usuario
-     * @param senha
-     * @return boolean
-     */
-    public boolean checarCredenciais(String usuario, String senha){
-        
-        //http://www.sqlitetutorial.net/sqlite-java/select/
-        
-        String sql = "SELECT * FROM sindico WHERE usuario='"+usuario+"' AND senha='" + senha + "'";
-        boolean resultado = false;
-        Statement stmt = null;
-        
-        try {
-             stmt  = conn.createStatement();
-             //System.out.println("SQL: " + sql);
-             ResultSet rs = stmt.executeQuery(sql);
-            
-            // loop through the result set
-            while (rs.next()) {
-                /*String u = rs.getString("usuario");
-                String s = rs.getString("senha");
-                System.out.println(rs.getString("id"));
-                System.out.println(u);
-                System.out.println(s);*/
-
-                resultado = true;
-                System.out.println("valido!");
-
-            }
-            
-            // close statement
-            if (stmt != null) {
-                stmt.close();
-            }
-                
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        } 
-        
-        return resultado;
-    }
 }
