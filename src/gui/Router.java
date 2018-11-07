@@ -69,7 +69,7 @@ public class Router {
         
         for(CustomJPanel p : jpanelList){
             if(p.compareTag(painel.getTAG())){
-                System.out.println("Não é permitido adicionar duas vezes a mesma gui");
+                System.out.println("Não é permitido adicionar duas vezes a mesma gui com tag: " + painel.getTAG());
                 return;
             }
         }

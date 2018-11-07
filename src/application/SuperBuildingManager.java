@@ -45,6 +45,11 @@ public class SuperBuildingManager {
         
         LoginController loginController = new LoginController();
         MainMenuController mainMenuController = new MainMenuController();
+        CondominioController condominioController = new CondominioController();
+        MoradoresController moradoresController = new MoradoresController();
+        OpcoesController opcoesController = new OpcoesController();
+        OrcamentoController orcamentoController = new OrcamentoController();
+        SindicoController sindicoController = new SindicoController();
        
         
         //abre a tela de login primeiro
