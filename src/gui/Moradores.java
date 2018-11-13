@@ -5,6 +5,9 @@
  */
 package gui;
 
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+
 /**
  *
  * @author thiagoalmeida
@@ -27,19 +30,469 @@ public class Moradores extends CustomJPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel3 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jSplitPane1 = new javax.swing.JSplitPane();
+        jPainelListMoradores = new javax.swing.JPanel();
+        jSplitPane3 = new javax.swing.JSplitPane();
+        jLabelMoradores = new javax.swing.JLabel();
+        jScrollPanelListaMoradores = new javax.swing.JScrollPane();
+        jListMoradores = new javax.swing.JList<>();
+        jTabbedPaneInfoGeral = new javax.swing.JTabbedPane();
+        jScrollPaneInfoMorador = new javax.swing.JScrollPane();
+        jTextInfoMorador = new javax.swing.JTextArea();
+        jPanelInfoPagamentos = new javax.swing.JPanel();
+        jPainelSeletorMeses = new javax.swing.JPanel();
+        jButtonMonth01 = new javax.swing.JButton();
+        jButtonMonth02 = new javax.swing.JButton();
+        jButtonMonth03 = new javax.swing.JButton();
+        jButtonMonth04 = new javax.swing.JButton();
+        jButtonMonth05 = new javax.swing.JButton();
+        jButtonMonth06 = new javax.swing.JButton();
+        jButtonMonth07 = new javax.swing.JButton();
+        jButtonMonth08 = new javax.swing.JButton();
+        jButtonMonth09 = new javax.swing.JButton();
+        jButtonMonth10 = new javax.swing.JButton();
+        jButtonMonth11 = new javax.swing.JButton();
+        jButtonMonth12 = new javax.swing.JButton();
+        jLabelAno = new javax.swing.JLabel();
+        jComboBoxSelectAno = new javax.swing.JComboBox<>();
+        jPanelInfoPagamento = new javax.swing.JPanel();
+        jScrollPaneInfoPagamento = new javax.swing.JScrollPane();
+        jTextInfoPagamento = new javax.swing.JTextArea();
+        jButtonEmitirBoleto = new javax.swing.JButton();
+        jButtonDarBaixa = new javax.swing.JButton();
+        jButtonEmitirSegundaVia = new javax.swing.JButton();
+        jButtonReturn = new javax.swing.JButton();
+
+        jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jSplitPane1.setDividerLocation(250);
+
+        jSplitPane3.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
+
+        jLabelMoradores.setText("Moradores");
+        jLabelMoradores.setToolTipText("");
+        jSplitPane3.setLeftComponent(jLabelMoradores);
+
+        jListMoradores.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPanelListaMoradores.setViewportView(jListMoradores);
+
+        jSplitPane3.setRightComponent(jScrollPanelListaMoradores);
+
+        javax.swing.GroupLayout jPainelListMoradoresLayout = new javax.swing.GroupLayout(jPainelListMoradores);
+        jPainelListMoradores.setLayout(jPainelListMoradoresLayout);
+        jPainelListMoradoresLayout.setHorizontalGroup(
+            jPainelListMoradoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 249, Short.MAX_VALUE)
+            .addGroup(jPainelListMoradoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jSplitPane3, javax.swing.GroupLayout.Alignment.TRAILING))
+        );
+        jPainelListMoradoresLayout.setVerticalGroup(
+            jPainelListMoradoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 448, Short.MAX_VALUE)
+            .addGroup(jPainelListMoradoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jSplitPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE))
+        );
+
+        jSplitPane1.setLeftComponent(jPainelListMoradores);
+
+        jTabbedPaneInfoGeral.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jTextInfoMorador.setColumns(20);
+        jTextInfoMorador.setRows(5);
+        jScrollPaneInfoMorador.setViewportView(jTextInfoMorador);
+
+        jTabbedPaneInfoGeral.addTab("Info", jScrollPaneInfoMorador);
+
+        jPainelSeletorMeses.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jButtonMonth01.setText("Janeiro");
+
+        jButtonMonth02.setText("Fevereiro");
+
+        jButtonMonth03.setText("Março");
+
+        jButtonMonth04.setText("Abril");
+
+        jButtonMonth05.setText("Maio");
+
+        jButtonMonth06.setText("Junho");
+
+        jButtonMonth07.setText("Julho");
+
+        jButtonMonth08.setText("Agosto");
+
+        jButtonMonth09.setText("Setembro");
+
+        jButtonMonth10.setText("Outubro");
+
+        jButtonMonth11.setText("Novembro");
+        jButtonMonth11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMonth11ActionPerformed(evt);
+            }
+        });
+
+        jButtonMonth12.setText("Dezembro");
+
+        jLabelAno.setText("Ano: ");
+
+        jComboBoxSelectAno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        javax.swing.GroupLayout jPainelSeletorMesesLayout = new javax.swing.GroupLayout(jPainelSeletorMeses);
+        jPainelSeletorMeses.setLayout(jPainelSeletorMesesLayout);
+        jPainelSeletorMesesLayout.setHorizontalGroup(
+            jPainelSeletorMesesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPainelSeletorMesesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPainelSeletorMesesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPainelSeletorMesesLayout.createSequentialGroup()
+                        .addComponent(jButtonMonth01, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonMonth02, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonMonth03, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonMonth04, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPainelSeletorMesesLayout.createSequentialGroup()
+                        .addGroup(jPainelSeletorMesesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPainelSeletorMesesLayout.createSequentialGroup()
+                                .addComponent(jButtonMonth09, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonMonth10, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPainelSeletorMesesLayout.createSequentialGroup()
+                                .addComponent(jButtonMonth05, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonMonth06, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPainelSeletorMesesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPainelSeletorMesesLayout.createSequentialGroup()
+                                .addComponent(jButtonMonth07, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonMonth08, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPainelSeletorMesesLayout.createSequentialGroup()
+                                .addComponent(jButtonMonth11, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonMonth12, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPainelSeletorMesesLayout.createSequentialGroup()
+                        .addComponent(jLabelAno)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboBoxSelectAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPainelSeletorMesesLayout.setVerticalGroup(
+            jPainelSeletorMesesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPainelSeletorMesesLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPainelSeletorMesesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelAno)
+                    .addComponent(jComboBoxSelectAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPainelSeletorMesesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonMonth01)
+                    .addComponent(jButtonMonth02)
+                    .addComponent(jButtonMonth03)
+                    .addComponent(jButtonMonth04))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPainelSeletorMesesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonMonth07)
+                    .addComponent(jButtonMonth08)
+                    .addComponent(jButtonMonth05)
+                    .addComponent(jButtonMonth06))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPainelSeletorMesesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonMonth09)
+                    .addComponent(jButtonMonth10)
+                    .addComponent(jButtonMonth11)
+                    .addComponent(jButtonMonth12))
+                .addGap(56, 56, 56))
+        );
+
+        jPanelInfoPagamento.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jTextInfoPagamento.setColumns(20);
+        jTextInfoPagamento.setRows(5);
+        jScrollPaneInfoPagamento.setViewportView(jTextInfoPagamento);
+
+        jButtonEmitirBoleto.setText("Emitir boleto");
+        jButtonEmitirBoleto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEmitirBoletoActionPerformed(evt);
+            }
+        });
+
+        jButtonDarBaixa.setText("Dar Baixa");
+
+        jButtonEmitirSegundaVia.setText("Emitir Segunda Via");
+
+        javax.swing.GroupLayout jPanelInfoPagamentoLayout = new javax.swing.GroupLayout(jPanelInfoPagamento);
+        jPanelInfoPagamento.setLayout(jPanelInfoPagamentoLayout);
+        jPanelInfoPagamentoLayout.setHorizontalGroup(
+            jPanelInfoPagamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelInfoPagamentoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelInfoPagamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPaneInfoPagamento)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelInfoPagamentoLayout.createSequentialGroup()
+                        .addGap(0, 1, Short.MAX_VALUE)
+                        .addComponent(jButtonEmitirBoleto, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonDarBaixa, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonEmitirSegundaVia, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        jPanelInfoPagamentoLayout.setVerticalGroup(
+            jPanelInfoPagamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelInfoPagamentoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPaneInfoPagamento, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelInfoPagamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonEmitirBoleto)
+                    .addComponent(jButtonDarBaixa)
+                    .addComponent(jButtonEmitirSegundaVia))
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout jPanelInfoPagamentosLayout = new javax.swing.GroupLayout(jPanelInfoPagamentos);
+        jPanelInfoPagamentos.setLayout(jPanelInfoPagamentosLayout);
+        jPanelInfoPagamentosLayout.setHorizontalGroup(
+            jPanelInfoPagamentosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelInfoPagamentosLayout.createSequentialGroup()
+                .addContainerGap(34, Short.MAX_VALUE)
+                .addGroup(jPanelInfoPagamentosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPainelSeletorMeses, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelInfoPagamento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32))
+        );
+        jPanelInfoPagamentosLayout.setVerticalGroup(
+            jPanelInfoPagamentosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelInfoPagamentosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPainelSeletorMeses, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanelInfoPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+
+        jTabbedPaneInfoGeral.addTab("Pagamentos", jPanelInfoPagamentos);
+
+        jSplitPane1.setRightComponent(jTabbedPaneInfoGeral);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 828, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 480, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+
+        jButtonReturn.setText("Voltar");
+        jButtonReturn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonReturnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 65, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButtonReturn)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 65, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 70, Short.MAX_VALUE)
+                .addComponent(jButtonReturn)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 114, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButtonMonth11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMonth11ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonMonth11ActionPerformed
+
+    private void jButtonEmitirBoletoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEmitirBoletoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonEmitirBoletoActionPerformed
+
+    private void jButtonReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReturnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonReturnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonDarBaixa;
+    private javax.swing.JButton jButtonEmitirBoleto;
+    private javax.swing.JButton jButtonEmitirSegundaVia;
+    private javax.swing.JButton jButtonMonth01;
+    private javax.swing.JButton jButtonMonth02;
+    private javax.swing.JButton jButtonMonth03;
+    private javax.swing.JButton jButtonMonth04;
+    private javax.swing.JButton jButtonMonth05;
+    private javax.swing.JButton jButtonMonth06;
+    private javax.swing.JButton jButtonMonth07;
+    private javax.swing.JButton jButtonMonth08;
+    private javax.swing.JButton jButtonMonth09;
+    private javax.swing.JButton jButtonMonth10;
+    private javax.swing.JButton jButtonMonth11;
+    private javax.swing.JButton jButtonMonth12;
+    private javax.swing.JButton jButtonReturn;
+    private javax.swing.JComboBox<String> jComboBoxSelectAno;
+    private javax.swing.JLabel jLabelAno;
+    private javax.swing.JLabel jLabelMoradores;
+    private javax.swing.JList<String> jListMoradores;
+    private javax.swing.JPanel jPainelListMoradores;
+    private javax.swing.JPanel jPainelSeletorMeses;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanelInfoPagamento;
+    private javax.swing.JPanel jPanelInfoPagamentos;
+    private javax.swing.JScrollPane jScrollPaneInfoMorador;
+    private javax.swing.JScrollPane jScrollPaneInfoPagamento;
+    private javax.swing.JScrollPane jScrollPanelListaMoradores;
+    private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JSplitPane jSplitPane3;
+    private javax.swing.JTabbedPane jTabbedPaneInfoGeral;
+    private javax.swing.JTextArea jTextInfoMorador;
+    private javax.swing.JTextArea jTextInfoPagamento;
     // End of variables declaration//GEN-END:variables
+
+    public void addActionListener(ActionListener listener){
+        this.jButtonMonth01.addActionListener(listener);
+        this.jButtonMonth02.addActionListener(listener);
+        this.jButtonMonth03.addActionListener(listener);
+        this.jButtonMonth04.addActionListener(listener);
+        this.jButtonMonth05.addActionListener(listener);
+        this.jButtonMonth06.addActionListener(listener);
+        this.jButtonMonth07.addActionListener(listener);
+        this.jButtonMonth08.addActionListener(listener);
+        this.jButtonMonth09.addActionListener(listener);
+        this.jButtonMonth10.addActionListener(listener);
+        this.jButtonMonth11.addActionListener(listener);
+        this.jButtonMonth12.addActionListener(listener);
+        
+        this.jButtonDarBaixa.addActionListener(listener);
+        this.jButtonEmitirBoleto.addActionListener(listener);
+        this.jButtonEmitirSegundaVia.addActionListener(listener);
+        
+        this.jButtonReturn.addActionListener(listener);
+    }
+
+    public JButton getjButtonDarBaixa() {
+        return jButtonDarBaixa;
+    }
+
+    public JButton getjButtonEmitirBoleto() {
+        return jButtonEmitirBoleto;
+    }
+
+    public JButton getjButtonEmitirSegundaVia() {
+        return jButtonEmitirSegundaVia;
+    }
+
+    public JButton getjButtonMonth01() {
+        return jButtonMonth01;
+    }
+
+    public JButton getjButtonMonth02() {
+        return jButtonMonth02;
+    }
+
+    public JButton getjButtonMonth03() {
+        return jButtonMonth03;
+    }
+
+    public JButton getjButtonMonth04() {
+        return jButtonMonth04;
+    }
+
+    public JButton getjButtonMonth05() {
+        return jButtonMonth05;
+    }
+
+    public JButton getjButtonMonth06() {
+        return jButtonMonth06;
+    }
+
+    public JButton getjButtonMonth07() {
+        return jButtonMonth07;
+    }
+
+    public JButton getjButtonMonth08() {
+        return jButtonMonth08;
+    }
+
+    public JButton getjButtonMonth09() {
+        return jButtonMonth09;
+    }
+
+    public JButton getjButtonMonth10() {
+        return jButtonMonth10;
+    }
+
+    public JButton getjButtonMonth11() {
+        return jButtonMonth11;
+    }
+
+    public JButton getjButtonMonth12() {
+        return jButtonMonth12;
+    }
+
+    public JButton getjButtonReturn() {
+        return jButtonReturn;
+    }
+    
+    
+    public void setTextInfoGeralMorador(String t){
+        jTextInfoMorador.setText(t);
+    }
+    
+    public void setTextInfoPagamentosMorador(String t){
+        jTextInfoPagamento.setText(t);
+    }
+    
+    
 }

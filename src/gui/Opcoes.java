@@ -5,6 +5,9 @@
  */
 package gui;
 
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+
 /**
  *
  * @author thiagoalmeida
@@ -27,19 +30,174 @@ public class Opcoes extends CustomJPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel2 = new javax.swing.JPanel();
+        jButtonMoradores = new javax.swing.JButton();
+        jButtonInfoCondominio = new javax.swing.JButton();
+        jButtonSuporte = new javax.swing.JButton();
+        jButtonContatos = new javax.swing.JButton();
+        jButtonReturn = new javax.swing.JButton();
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jButtonMoradores.setText("Moradores");
+        jButtonMoradores.setPreferredSize(new java.awt.Dimension(378, 159));
+        jButtonMoradores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMoradoresActionPerformed(evt);
+            }
+        });
+
+        jButtonInfoCondominio.setText("Informações do Condomínio");
+        jButtonInfoCondominio.setPreferredSize(new java.awt.Dimension(378, 159));
+        jButtonInfoCondominio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonInfoCondominioActionPerformed(evt);
+            }
+        });
+
+        jButtonSuporte.setText("Suporte");
+        jButtonSuporte.setPreferredSize(new java.awt.Dimension(378, 330));
+        jButtonSuporte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSuporteActionPerformed(evt);
+            }
+        });
+
+        jButtonContatos.setText("Contatos");
+        jButtonContatos.setPreferredSize(new java.awt.Dimension(378, 330));
+        jButtonContatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonContatosActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jButtonInfoCondominio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonContatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jButtonMoradores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonSuporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonInfoCondominio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonContatos, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonMoradores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonSuporte, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jButtonReturn.setText("Voltar");
+        jButtonReturn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonReturnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButtonReturn)
+                .addContainerGap(747, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(63, 63, 63)
+                .addComponent(jButtonReturn)
+                .addContainerGap(472, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(99, 99, 99)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(100, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButtonMoradoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMoradoresActionPerformed
+        // TODO add your handling code here:
+        //aqui botão do orçamento
+    }//GEN-LAST:event_jButtonMoradoresActionPerformed
+
+    private void jButtonInfoCondominioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInfoCondominioActionPerformed
+        // TODO add your handling code here:
+        //aqui botão de opções
+    }//GEN-LAST:event_jButtonInfoCondominioActionPerformed
+
+    private void jButtonSuporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSuporteActionPerformed
+        // TODO add your handling code here:
+        //aqui botão de moradores
+    }//GEN-LAST:event_jButtonSuporteActionPerformed
+
+    private void jButtonContatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonContatosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonContatosActionPerformed
+
+    private void jButtonReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReturnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonReturnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonContatos;
+    private javax.swing.JButton jButtonInfoCondominio;
+    private javax.swing.JButton jButtonMoradores;
+    private javax.swing.JButton jButtonReturn;
+    private javax.swing.JButton jButtonSuporte;
+    private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
+
+    public void addActionListener(ActionListener listener){
+        this.jButtonInfoCondominio.addActionListener(listener);
+        this.jButtonMoradores.addActionListener(listener);
+        this.jButtonSuporte.addActionListener(listener);
+        this.jButtonContatos.addActionListener(listener);
+        this.jButtonReturn.addActionListener(listener);
+    }
+
+    public JButton getjButtonContatos() {
+        return jButtonContatos;
+    }
+
+    public JButton getjButtonInfoCondominio() {
+        return jButtonInfoCondominio;
+    }
+
+    public JButton getjButtonMoradores() {
+        return jButtonMoradores;
+    }
+
+    public JButton getjButtonSuporte() {
+        return jButtonSuporte;
+    }
+
+    public JButton getjButtonReturn() {
+        return jButtonReturn;
+    }
+
+    
 }
