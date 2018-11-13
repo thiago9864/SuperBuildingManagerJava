@@ -41,6 +41,7 @@ CREATE INDEX IF NOT EXISTS "morador.fk_morador_condominio1_idx" ON "morador" ("c
 CREATE TABLE IF NOT EXISTS "sindico"(
   "id" INTEGER NOT NULL,
   "nome" TEXT,
+  "cpf" TEXT,
   "telefone" TEXT,
   "email" TEXT,
   "usuario" TEXT,

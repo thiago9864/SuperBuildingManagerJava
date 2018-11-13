@@ -5,6 +5,7 @@
  */
 package persistencia;
 
+import dominio.Sindico;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
@@ -14,6 +15,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  *
@@ -136,6 +139,35 @@ public class FactoryConnection {
                     statement.close();
 		}
 	}
+   }
+    
+    
+   public Integer maxIDFromTable(String table_name){
+       String sql = "SELECT id FROM " + table_name;
+        Statement stmt;
+        Connection conn = getConnection();
+        ArrayList<Integer> id_list = new ArrayList<>();
+        
+        try {
+             stmt  = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql);
+             
+             while (rs.next()) {
+                 id_list.add(rs.getInt("id"));
+             }
+
+            // close statement
+            stmt.close();
+                
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } 
+        if(id_list.isEmpty()){
+            return -1;
+        } else {
+            return Collections.max(id_list);
+        }
+        
    }
     
 }

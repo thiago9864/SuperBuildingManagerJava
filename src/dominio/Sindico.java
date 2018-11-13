@@ -11,6 +11,7 @@ package dominio;
  */
 public class Sindico {
     private Integer id;
+    private Integer condominio_id;
     private String nome;
     private String cpf;
     private String telefone;
@@ -20,8 +21,9 @@ public class Sindico {
 
     public Sindico() {}
     
-    public Sindico(Integer id, String nome, String cpf, String telefone, String email, String login, String senha) {
+    public Sindico(Integer id, Integer condominio_id, String nome, String cpf, String telefone, String email, String login, String senha) {
         this.id = id;
+        this.condominio_id = condominio_id;
         this.nome = nome;
         this.cpf = cpf;
         this.telefone = telefone;
@@ -37,6 +39,16 @@ public class Sindico {
     public void setId(Integer id) {
         this.id = id;
     }
+
+    public Integer getCondominioId() {
+        return condominio_id;
+    }
+
+    public void setCondominioId(Integer condominio_id) {
+        this.condominio_id = condominio_id;
+    }
+    
+    
 
     public String getNome() {
         return nome;
