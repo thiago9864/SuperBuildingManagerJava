@@ -98,7 +98,7 @@ public class SindicoDAOTest {
                 "senha"
         );
         
-        Integer idInserted = instance.createSindico(objSindico);
+        Integer idInserted = instance.create(objSindico);
         
         System.out.println("idInserted: " + idInserted);
         
@@ -123,7 +123,7 @@ public class SindicoDAOTest {
                 "senha"
         );
         
-        boolean wasUpdated = instance.updateSindico(objSindico);
+        boolean wasUpdated = instance.update(objSindico);
         
         System.out.println("wasUpdated: " + wasUpdated);
         
@@ -139,7 +139,7 @@ public class SindicoDAOTest {
     public void teste4() {
         System.out.println("readSindico");
        
-        Sindico lido = instance.readSindico(maxID);
+        Sindico lido = instance.read(maxID);
         
         objSindico = new Sindico(
                 maxID,
@@ -171,7 +171,7 @@ public class SindicoDAOTest {
     public void teste5() {
         System.out.println("deleteSindico");
 
-        boolean wasDeleted = instance.deleteSindico(maxID);
+        boolean wasDeleted = instance.delete(maxID);
          
         assertEquals(true, wasDeleted);
     }

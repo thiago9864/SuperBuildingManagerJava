@@ -48,8 +48,6 @@ public class Sindico {
         this.condominio_id = condominio_id;
     }
     
-    
-
     public String getNome() {
         return nome;
     }

@@ -12,6 +12,7 @@ CREATE TABLE IF NOT EXISTS "status_boleto"(
 CREATE TABLE IF NOT EXISTS "condominio"(
   "id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
   "nome" TEXT,
+  "cnpj" TEXT,
   "telefone" TEXT,
   "endereco" TEXT,
   "numero" TEXT,

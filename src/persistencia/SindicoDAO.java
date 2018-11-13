@@ -7,6 +7,7 @@ package persistencia;
 
 import dominio.Sindico;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -31,15 +32,18 @@ public class SindicoDAO {
         
         //http://www.sqlitetutorial.net/sqlite-java/select/
         
-        String sql = "SELECT * FROM sindico WHERE usuario='"+usuario+"' AND senha='" + senha + "'";
         boolean resultado = false;
-        Statement stmt;
         Connection conn = factoryConn.getConnection();
         
+        String sql = "SELECT * FROM sindico WHERE usuario=$1 AND senha=$2";
+        
+        CustomPrepareStatement prepare = new CustomPrepareStatement(sql);
+        
         try {
-             stmt  = conn.createStatement();
-             System.out.println("SQL: " + sql);
-             ResultSet rs = stmt.executeQuery(sql);
+            prepare.setString(1, usuario);
+            prepare.setString(2, senha);
+
+            ResultSet rs = prepare.executeQuery(conn);
             
             // loop through the result set
             while (rs.next()) {
@@ -53,15 +57,12 @@ public class SindicoDAO {
                 System.out.println("valido!");
             }
             
-            // close statement
-            stmt.close();
+            // close connection
+            factoryConn.closeConnection();
                 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         } 
-        
-        
-        factoryConn.closeConnection();
         
         return resultado;
     }
@@ -79,36 +80,38 @@ public class SindicoDAO {
      * @param sindico (objeto do tipo Sindico)
      * @return (int idInserido ou -1 se der falha)
      */
-    public Integer createSindico(Sindico sindico){
+    public Integer create(Sindico sindico){
         
-        Integer newID = factoryConn.maxIDFromTable("sindico") + 1;
-        String sql = "INSERT INTO sindico (id, nome, cpf, telefone, email, usuario, senha, condominio_id) ";
-        sql += "VALUES ($1, '$2', '$3', '$4', '$5', '$6', '$7', $8)";
-        
-        sql = sql.replace("$1", newID.toString());
-        sql = sql.replace("$2", sindico.getNome());
-        sql = sql.replace("$3", sindico.getCpf());
-        sql = sql.replace("$4", sindico.getTelefone());
-        sql = sql.replace("$5", sindico.getEmail());
-        sql = sql.replace("$6", sindico.getLogin());
-        sql = sql.replace("$7", sindico.getSenha());
-        sql = sql.replace("$8", sindico.getCondominioId().toString());
-        
-        Sindico sindicoObj = null;
-        Statement stmt;
-        int rowsAffected = 0;
         Connection conn = factoryConn.getConnection();
+        Integer newID = factoryConn.maxIDFromTable("sindico") + 1;
+        
+        int rowsAffected = 0;
+        
+
+        String sql = "INSERT INTO sindico (id, nome, cpf, telefone, email, usuario, senha, condominio_id) ";
+        sql += "VALUES ($1, $2, $3, $4, $5, $6, $7, $8)";
+        
+        CustomPrepareStatement prepare = new CustomPrepareStatement(sql);
         
         try {
-            stmt  = conn.createStatement();
             System.out.println("SQL: " + sql);
-             
-            rowsAffected = stmt.executeUpdate(sql);
+            
+            prepare.setInt(1, newID);
+            prepare.setString(2, sindico.getNome());
+            prepare.setString(3, sindico.getCpf());
+            prepare.setString(4, sindico.getTelefone());
+            prepare.setString(5, sindico.getEmail());
+            prepare.setString(6, sindico.getLogin());
+            prepare.setString(7, sindico.getSenha());
+            prepare.setInt(8, sindico.getCondominioId());
+            
+            rowsAffected = prepare.executeUpdate(conn);
+            
             System.out.println("rowsAffected: " + rowsAffected);
              
-            // close statement
-            stmt.close();
-                
+            // close connection
+            factoryConn.closeConnection();
+            
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -121,35 +124,38 @@ public class SindicoDAO {
     
     /**
      * Metodo que obtem os dados do sindico indicado pelo parametro idSindico
-     * @param idSindico (int)
+     * @param id (int)
      * @return (objeto Sindico)
      */
-    public Sindico readSindico(Integer idSindico){
-        String sql = "SELECT * FROM sindico WHERE id=$1";
-        Sindico sindicoObj = null;
-        Statement stmt;
-        Connection conn = factoryConn.getConnection();
+    public Sindico read(Integer id){
         
-        sql = sql.replace("$1", idSindico.toString());
+        Connection conn = factoryConn.getConnection();
+        Sindico sindicoObj = null;
+        
+        
+        String sql = "SELECT * FROM sindico WHERE id=$1";
+        
+        CustomPrepareStatement prepare = new CustomPrepareStatement(sql);
         
         try {
-             stmt  = conn.createStatement();
-             System.out.println("SQL: " + sql);
-             ResultSet rs = stmt.executeQuery(sql);
+            
+            prepare.setInt(1, id);
              
-             sindicoObj = new Sindico(
-                    rs.getInt("id"),
-                    rs.getInt("condominio_id"),
-                    rs.getString("nome"),
-                    rs.getString("cpf"),
-                    rs.getString("telefone"),
-                    rs.getString("email"),
-                    rs.getString("usuario"),
-                    rs.getString("senha")
-             );
+            ResultSet rs = prepare.executeQuery(conn);
+             
+            sindicoObj = new Sindico(
+                   rs.getInt("id"),
+                   rs.getInt("condominio_id"),
+                   rs.getString("nome"),
+                   rs.getString("cpf"),
+                   rs.getString("telefone"),
+                   rs.getString("email"),
+                   rs.getString("usuario"),
+                   rs.getString("senha")
+            );
 
-            // close statement
-            stmt.close();
+            // close connection
+            factoryConn.closeConnection();
                 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -163,37 +169,35 @@ public class SindicoDAO {
      * @param sindico (objeto Sindico)
      * @return (true se sucesso, false se erro)
      */
-    public boolean updateSindico(Sindico sindico){
+    public boolean update(Sindico sindico){
+        
+        Connection conn = factoryConn.getConnection();
+        int rowsAffected = 0;
         
         String sql = "";
         
         sql += "UPDATE sindico ";
-        sql += "SET nome='$1', cpf='$2', telefone='$3', email='$4', usuario='$5', senha='$6', condominio_id=$7 ";
+        sql += "SET nome=$1, cpf=$2, telefone=$3, email=$4, usuario=$5, senha=$6, condominio_id=$7 ";
         sql += "WHERE id=$8";
         
-        sql = sql.replace("$1", sindico.getNome());
-        sql = sql.replace("$2", sindico.getCpf());
-        sql = sql.replace("$3", sindico.getTelefone());
-        sql = sql.replace("$4", sindico.getEmail());
-        sql = sql.replace("$5", sindico.getLogin());
-        sql = sql.replace("$6", sindico.getSenha());
-        sql = sql.replace("$7", sindico.getCondominioId().toString());
-        sql = sql.replace("$8", sindico.getId().toString());
-        
-        Sindico sindicoObj = null;
-        Statement stmt;
-        int rowsAffected = 0;
-        Connection conn = factoryConn.getConnection();
+        CustomPrepareStatement prepare = new CustomPrepareStatement(sql);
         
         try {
-            stmt  = conn.createStatement();
-            System.out.println("SQL: " + sql);
+
+            prepare.setString(1, sindico.getNome());
+            prepare.setString(2, sindico.getCpf());
+            prepare.setString(3, sindico.getTelefone());
+            prepare.setString(4, sindico.getEmail());
+            prepare.setString(5, sindico.getLogin());
+            prepare.setString(6, sindico.getSenha());
+            prepare.setInt(7, sindico.getCondominioId());
+            prepare.setInt(8, sindico.getId());
              
-            rowsAffected = stmt.executeUpdate(sql);
+            rowsAffected = prepare.executeUpdate(conn);
             System.out.println("rowsAffected: " + rowsAffected);
             
-            // close statement
-            stmt.close();
+            // close connection
+            factoryConn.closeConnection();
             
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -206,31 +210,26 @@ public class SindicoDAO {
     
     /**
      * Metodo que deleta um sindico dado id fornecido
-     * @param idSindico (int)
+     * @param id (int)
      * @return (true se excluiu, false se não excluiu)
      */
-    public boolean deleteSindico(Integer idSindico){
-        
-        String sql = "";
-        
-        sql += "DELETE FROM sindico WHERE id=$1";
-        
-        sql = sql.replace("$1", idSindico.toString());
-        
-        Sindico sindicoObj = null;
-        Statement stmt;
-        int rowsAffected = 0;
+    public boolean delete(Integer id){
         Connection conn = factoryConn.getConnection();
+        int rowsAffected = 0;
+        
+        String sql = "DELETE FROM sindico WHERE id=$1";
+       
+        CustomPrepareStatement prepare = new CustomPrepareStatement(sql);
         
         try {
-            stmt  = conn.createStatement();
-            System.out.println("SQL: " + sql);
+            
+            prepare.setInt(1, id);
              
-            rowsAffected = stmt.executeUpdate(sql);
+            rowsAffected = prepare.executeUpdate(conn);
             System.out.println("rowsAffected: " + rowsAffected);
             
-            // close statement
-            stmt.close();
+            // close connection
+            factoryConn.closeConnection();
                 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
