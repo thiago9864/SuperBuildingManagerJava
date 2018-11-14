@@ -21,6 +21,10 @@ public class Condominio {
     private Integer cep;
     private Float valor_aluguel;
 
+    public Condominio(Integer id) {
+        this.id = id;
+    }
+    
     public Condominio(Integer id, String cnpj, String nome, String telefone, String endereco, String numero, String cidade, String estado, Integer cep, Float valor_aluguel) {
         this.id = id;
         this.nome = nome;

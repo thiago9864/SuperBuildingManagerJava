@@ -35,6 +35,7 @@ public class Morador {
         this.apartamento = apartamento;
     }
 
+
     public Integer getId() {
         return id;
     }
