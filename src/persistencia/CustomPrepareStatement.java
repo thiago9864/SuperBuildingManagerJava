@@ -34,8 +34,12 @@ public class CustomPrepareStatement {
     
     public Integer executeUpdate(Connection connection) throws SQLException {
         Statement stmt = connection.createStatement();
+        
         System.out.println("executeUpdate: " + sql);
-        return stmt.executeUpdate(sql);
+        Integer rowsAffected = stmt.executeUpdate(sql);
+        System.out.println("rowsAffected: " + rowsAffected);
+
+        return rowsAffected;
     }
     
     public ResultSet executeQuery(Connection connection) throws SQLException {

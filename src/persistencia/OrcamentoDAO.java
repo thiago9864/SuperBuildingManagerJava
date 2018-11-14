@@ -92,7 +92,6 @@ public class OrcamentoDAO {
             prepare.setFloat(7, orcamento.getSaldo());
              
             rowsAffected = prepare.executeUpdate(conn);
-            System.out.println("rowsAffected: " + rowsAffected);
              
             // close connection
             factoryConn.closeConnection();
@@ -122,46 +121,13 @@ public class OrcamentoDAO {
         String sql = "";
         
         sql = "SELECT o.id, o.mes, o.ano, o.custo, o.renda, o.saldo, ";
-        sql += "s.id as sindico_id, s.nome as nome_s, s.cpf. s.telefone as telefone_s, s.email, ";
+        sql += "s.id as sindico_id, s.nome as nome_s, s.cpf, s.telefone as telefone_s, s.email, ";
         sql += "c.id as condominio_id, c.nome as nome_c, c.cnpj, c.telefone as telefone_c, c.endereco, c.numero, c.cidade, c.estado, c.cep, c.valor_aluguel ";
         sql += "FROM orcamento o, sindico s, condominio c ";
-        sql += "WHERE s.id=o.sindico_id AND c.id=s.condominio_id AND id=$1";
+        sql += "WHERE s.id=o.sindico_id AND c.id=s.condominio_id AND o.id=$1";
         
         CustomPrepareStatement prepare = new CustomPrepareStatement(sql);
-        
-        /*
-        "id" INTEGER NOT NULL,
-  "sindico_id" INTEGER NOT NULL,
-  "mes" INTEGER,
-  "ano" INTEGER,
-  "custo" REAL,
-  "renda" REAL,
-  "saldo" REAL,
-        
-        *** sindico ***
-        
-        "id" INTEGER NOT NULL,
-  "nome" TEXT,
-  "cpf" TEXT,
-  "telefone" TEXT,
-  "email" TEXT,
-  "usuario" TEXT,
-  "senha" TEXT,
-  "condominio_id" INTEGER NOT NULL,
-        
-        *** condominio ***
-        
-        "id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-  "nome" TEXT,
-  "cnpj" TEXT,
-  "telefone" TEXT,
-  "endereco" TEXT,
-  "numero" TEXT,
-  "cidade" TEXT,
-  "estado" TEXT,
-  "cep" INTEGER,
-  "valor_aluguel" REAL
-        */
+
         try {
             
             prepare.setInt(1, id);
@@ -180,35 +146,37 @@ public class OrcamentoDAO {
         return objOrcamento;
     }
     
+    
     /**
      * Metodo que lista os orçamentos baseado no filtro ano e mês
      * @param ano (int)
      * @param mes (int)
      * @return (ArrayList<Orcamento>)
      */
-    public ArrayList<Orcamento> list(Integer ano, Integer mes){
+    public ArrayList<Orcamento> list(Integer mes, Integer ano){
         
         Connection conn = factoryConn.getConnection();
         ArrayList<Orcamento> orcamentoArr = new ArrayList<>();
         String sql = "";
         
         sql = "SELECT o.id, o.mes, o.ano, o.custo, o.renda, o.saldo, ";
-        sql += "s.id as sindico_id, s.nome as nome_s, s.cpf. s.telefone as telefone_s, s.email, ";
+        sql += "s.id as sindico_id, s.nome as nome_s, s.cpf, s.telefone as telefone_s, s.email, ";
         sql += "c.id as condominio_id, c.nome as nome_c, c.cnpj, c.telefone as telefone_c, c.endereco, c.numero, c.cidade, c.estado, c.cep, c.valor_aluguel ";
         sql += "FROM orcamento o, sindico s, condominio c ";
-        sql += "WHERE s.id=o.sindico_id AND c.id=s.condominio_id AND ano=$1 AND mes=$2";
+        sql += "WHERE s.id=o.sindico_id AND c.id=s.condominio_id AND o.mes=$1 AND o.ano=$2";
         
         CustomPrepareStatement prepare = new CustomPrepareStatement(sql);
         
         try {
             
-            prepare.setInt(1, ano);
-            prepare.setInt(2, mes);
+            prepare.setInt(1, mes);
+            prepare.setInt(2, ano);
 
             ResultSet rs = prepare.executeQuery(conn);
             
             // loop through the result set
             while (rs.next()) {
+                System.out.println("mes: " + rs.getInt("mes") + ", ano: " + rs.getInt("ano"));
                 orcamentoArr.add(buildOrcamentoObject(rs));
             }
 
@@ -234,27 +202,24 @@ public class OrcamentoDAO {
         int rowsAffected = 0;
 
         String sql = "";
-        sql += "UPDATE orcamento ";
-        sql += "SET condominio_id=$1, nome=$2, telefone=$3, email=$4, cpf=$5, bloco=$6, andar=$7, apartamento=$8 ";
-        sql += "WHERE id=$9";
+        sql += "UPDATE orcamento SET ";
+        sql += "sindico_id=$1, mes=$2, ano=$3, custo=$4, renda=$5, saldo=$6 ";
+        sql += "WHERE id=$7";
         
         CustomPrepareStatement prepare = new CustomPrepareStatement(sql);
         
         try {
             
-            /* DESCOMENTAR - Está aqui só pra não bugar o projeto
-            prepare.setInt(1, morador.getCondominioId());
-            prepare.setString(2, morador.getNome());
-            prepare.setString(3, morador.getTelefone());
-            prepare.setString(4, morador.getEmail());
-            prepare.setString(5, morador.getCpf());
-            prepare.setInt(6, morador.getBloco());
-            prepare.setInt(7, morador.getAndar());
-            prepare.setInt(8, morador.getApartamento());    
-            prepare.setInt(9, morador.getId());
-            */
+
+            prepare.setInt(1, orcamento.getSindico().getId());
+            prepare.setInt(2, orcamento.getMes());
+            prepare.setInt(3, orcamento.getAno());
+            prepare.setFloat(4, orcamento.getCusto());
+            prepare.setFloat(5, orcamento.getRenda());
+            prepare.setFloat(6, orcamento.getSaldo());
+            prepare.setInt(7, orcamento.getId());
+
             rowsAffected = prepare.executeUpdate(conn);
-            System.out.println("rowsAffected: " + rowsAffected);
             
             // close connection
             factoryConn.closeConnection();
@@ -288,7 +253,6 @@ public class OrcamentoDAO {
             prepare.setInt(1, id);
              
             rowsAffected = prepare.executeUpdate(conn);
-            System.out.println("rowsAffected: " + rowsAffected);
             
             // close connection
             factoryConn.closeConnection();

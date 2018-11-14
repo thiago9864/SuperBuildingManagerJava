@@ -180,15 +180,15 @@ public class MoradorDAOTest {
             if(lido == null){
                 fail("Morador não encontrado na lista");
             } else {
-                assertEquals(objMorador.getId(), listado.get(0).getId());
-                assertEquals(objMorador.getCondominioId(), listado.get(0).getCondominioId());
-                assertEquals(objMorador.getNome(), listado.get(0).getNome());
-                assertEquals(objMorador.getTelefone(), listado.get(0).getTelefone());
-                assertEquals(objMorador.getEmail(), listado.get(0).getEmail());
-                assertEquals(objMorador.getCpf(), listado.get(0).getCpf());
-                assertEquals(objMorador.getBloco(), listado.get(0).getBloco());
-                assertEquals(objMorador.getAndar(), listado.get(0).getAndar());
-                assertEquals(objMorador.getApartamento(), listado.get(0).getApartamento());
+                assertEquals(objMorador.getId(), lido.getId());
+                assertEquals(objMorador.getCondominioId(), lido.getCondominioId());
+                assertEquals(objMorador.getNome(), lido.getNome());
+                assertEquals(objMorador.getTelefone(), lido.getTelefone());
+                assertEquals(objMorador.getEmail(), lido.getEmail());
+                assertEquals(objMorador.getCpf(), lido.getCpf());
+                assertEquals(objMorador.getBloco(), lido.getBloco());
+                assertEquals(objMorador.getAndar(), lido.getAndar());
+                assertEquals(objMorador.getApartamento(), lido.getApartamento());
             }
         }
     }

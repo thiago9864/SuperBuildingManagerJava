@@ -5,12 +5,11 @@
  */
 package persistencia;
 
+import dominio.Condominio;
 import dominio.Sindico;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 /**
  *
@@ -73,6 +72,32 @@ public class SindicoDAO {
     /******** CRUD *********/
     
     
+    private Sindico buildSindicoObject(ResultSet rs) throws SQLException {
+        
+        Condominio condominioObj = new Condominio(
+                    rs.getInt("id_condominio"),
+                    rs.getString("cnpj"),
+                    rs.getString("nome_c"),                    
+                    rs.getString("telefone_c"),
+                    rs.getString("endereco"),
+                    rs.getString("numero"),
+                    rs.getString("cidade"),
+                    rs.getString("estado"),
+                    rs.getInt("cep"),
+                    rs.getFloat("valor_aluguel")
+            );
+            return new Sindico(
+                   rs.getInt("id"),
+                   condominioObj,
+                   rs.getString("nome"),
+                   rs.getString("cpf"),
+                   rs.getString("telefone"),
+                   rs.getString("email"),
+                   rs.getString("usuario"),
+                   rs.getString("senha")
+            );
+            
+    }
     
     
     /**
@@ -103,11 +128,10 @@ public class SindicoDAO {
             prepare.setString(5, sindico.getEmail());
             prepare.setString(6, sindico.getLogin());
             prepare.setString(7, sindico.getSenha());
-            prepare.setInt(8, sindico.getCondominioId());
+            prepare.setInt(8, sindico.getCondominio().getId());
             
             rowsAffected = prepare.executeUpdate(conn);
             
-            System.out.println("rowsAffected: " + rowsAffected);
              
             // close connection
             factoryConn.closeConnection();
@@ -133,7 +157,10 @@ public class SindicoDAO {
         Sindico sindicoObj = null;
         
         
-        String sql = "SELECT * FROM sindico WHERE id=$1";
+        String sql = "SELECT s.id, s.nome, s.cpf, s.telefone, s.email, s.usuario, s.senha, ";
+        sql += "c.id as id_condominio, c.nome as nome_c, c.cnpj, c.telefone as telefone_c, c.endereco, c.numero, c.cidade, c.estado, c.cep, c.valor_aluguel ";
+        sql += "FROM sindico s, condominio c ";
+        sql += "WHERE s.id=$1";
         
         CustomPrepareStatement prepare = new CustomPrepareStatement(sql);
         
@@ -142,17 +169,8 @@ public class SindicoDAO {
             prepare.setInt(1, id);
              
             ResultSet rs = prepare.executeQuery(conn);
-             
-            sindicoObj = new Sindico(
-                   rs.getInt("id"),
-                   rs.getInt("condominio_id"),
-                   rs.getString("nome"),
-                   rs.getString("cpf"),
-                   rs.getString("telefone"),
-                   rs.getString("email"),
-                   rs.getString("usuario"),
-                   rs.getString("senha")
-            );
+            
+            sindicoObj = buildSindicoObject(rs);
 
             // close connection
             factoryConn.closeConnection();
@@ -190,11 +208,10 @@ public class SindicoDAO {
             prepare.setString(4, sindico.getEmail());
             prepare.setString(5, sindico.getLogin());
             prepare.setString(6, sindico.getSenha());
-            prepare.setInt(7, sindico.getCondominioId());
+            prepare.setInt(7, sindico.getCondominio().getId());
             prepare.setInt(8, sindico.getId());
              
             rowsAffected = prepare.executeUpdate(conn);
-            System.out.println("rowsAffected: " + rowsAffected);
             
             // close connection
             factoryConn.closeConnection();
