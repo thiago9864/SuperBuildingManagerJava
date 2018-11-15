@@ -6,9 +6,11 @@
 package persistencia;
 
 import java.sql.Connection;
+import java.util.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -22,15 +24,29 @@ public class CustomPrepareStatement {
     }
     
     public void setInt(Integer indice, Integer valor){
-        this.sql = this.sql.replace("$" + indice.toString(), valor.toString());
-    }
-    public void setString(Integer indice, String valor){
-        this.sql = this.sql.replace("$" + indice.toString(), "'" + valor + "'");
-    }
-    public void setFloat(Integer indice, Float valor){
-        this.sql = this.sql.replace("$" + indice.toString(), valor.toString());
+        this.sql = this.sql.replace("$" + indice.toString() + "$", valor.toString());
     }
     
+    public void setString(Integer indice, String valor){
+        this.sql = this.sql.replace("$" + indice.toString() + "$", "'" + valor + "'");
+    }
+    
+    public void setFloat(Integer indice, Float valor){
+        this.sql = this.sql.replace("$" + indice.toString() + "$", valor.toString());
+    }
+    
+    public void setDate(Integer indice, Date data){
+        SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        this.sql = this.sql.replace("$" + indice.toString() + "$", "'" + fmt.format(data) + "'");
+    }
+    
+    public void setBoolean(Integer indice, boolean valor){
+        Integer valor_b = 0;
+        if(valor){
+            valor_b = 1;
+        }
+        this.sql = this.sql.replace("$" + indice.toString() + "$", valor_b.toString());
+    }
     
     public Integer executeUpdate(Connection connection) throws SQLException {
         Statement stmt = connection.createStatement();

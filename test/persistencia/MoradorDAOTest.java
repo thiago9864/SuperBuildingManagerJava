@@ -5,6 +5,7 @@
  */
 package persistencia;
 
+import dominio.Condominio;
 import dominio.Morador;
 import java.util.ArrayList;
 import org.junit.After;
@@ -60,7 +61,7 @@ public class MoradorDAOTest {
         
         objMorador = new Morador(
                 newID,
-                0,
+                new Condominio(0),
                 "nome",
                 "telefone",
                 "email",
@@ -87,7 +88,7 @@ public class MoradorDAOTest {
 
         objMorador = new Morador(
                 maxID,
-                0,
+                new Condominio(0),
                 "Fulano",
                 "(032) 9999-9999",
                 "teste@teste.com",
@@ -117,7 +118,7 @@ public class MoradorDAOTest {
         
         objMorador = new Morador(
                 maxID,
-                0,
+                new Condominio(0),
                 "Fulano",
                 "(032) 9999-9999",
                 "teste@teste.com",
@@ -131,7 +132,7 @@ public class MoradorDAOTest {
             fail("objMorador == null");
         } else {
             assertEquals(objMorador.getId(), lido.getId());
-            assertEquals(objMorador.getCondominioId(), lido.getCondominioId());
+            //assertEquals(objMorador.getCondominio().getId(), lido.getCondominio().getId());
             assertEquals(objMorador.getNome(), lido.getNome());
             assertEquals(objMorador.getTelefone(), lido.getTelefone());
             assertEquals(objMorador.getEmail(), lido.getEmail());
@@ -154,7 +155,7 @@ public class MoradorDAOTest {
         
         objMorador = new Morador(
                 maxID,
-                0,
+                new Condominio(0),
                 "Fulano",
                 "(032) 9999-9999",
                 "teste@teste.com",
@@ -181,7 +182,7 @@ public class MoradorDAOTest {
                 fail("Morador não encontrado na lista");
             } else {
                 assertEquals(objMorador.getId(), lido.getId());
-                assertEquals(objMorador.getCondominioId(), lido.getCondominioId());
+                //assertEquals(objMorador.getCondominio().getId(), lido.getCondominio().getId());
                 assertEquals(objMorador.getNome(), lido.getNome());
                 assertEquals(objMorador.getTelefone(), lido.getTelefone());
                 assertEquals(objMorador.getEmail(), lido.getEmail());

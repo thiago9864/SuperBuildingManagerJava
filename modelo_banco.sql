@@ -129,3 +129,11 @@ CREATE INDEX IF NOT EXISTS "item_financa.fk_item_financa_boleto1_idx" ON "item_f
 
 INSERT INTO "condominio" ("id", "nome", "valor_aluguel") VALUES (0, "Condominio", 100);
 INSERT INTO "sindico" ("id", "nome", "usuario", "senha", "condominio_id") VALUES (0, "Usuario", "admin", "admin", 0);
+INSERT INTO "morador" ("id", "nome", "condominio_id") VALUES (0, "Morador", 0);
+
+INSERT INTO "status_boleto" ("id", "nome", "descricao") VALUES (0, "Criado", "");
+INSERT INTO "status_boleto" ("id", "nome", "descricao") VALUES (1, "Aguardando Pagamento", "");
+INSERT INTO "status_boleto" ("id", "nome", "descricao") VALUES (2, "Pago", "");
+INSERT INTO "status_boleto" ("id", "nome", "descricao") VALUES (3, "Vencido", "");
+INSERT INTO "status_boleto" ("id", "nome", "descricao") VALUES (4, "Cancelado", "");
+INSERT INTO "status_boleto" ("id", "nome", "descricao") VALUES (5, "Arquivado", "");

@@ -40,7 +40,7 @@ public class CondominioDAO {
         int rowsAffected = 0;
         
         String sql = "INSERT INTO condominio (nome, cnpj, telefone, endereco, numero, cidade, estado, cep, valor_aluguel) ";
-        sql += "VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)";
+        sql += "VALUES ($1$, $2$, $3$, $4$, $5$, $6$, $7$, $8$, $9$)";
         
         CustomPrepareStatement prepare = new CustomPrepareStatement(sql);
 
@@ -84,7 +84,7 @@ public class CondominioDAO {
         Connection conn = factoryConn.getConnection();
         Condominio condominioObj = null;
         
-        String sql = "SELECT * FROM condominio WHERE id=$1";
+        String sql = "SELECT * FROM condominio WHERE id=$1$";
         
         CustomPrepareStatement prepare = new CustomPrepareStatement(sql);
         
@@ -131,8 +131,8 @@ public class CondominioDAO {
         
         String sql = "";
         sql += "UPDATE condominio ";
-        sql += "SET nome=$1, cnpj=$2, telefone=$3, endereco=$4, numero=$5, cidade=$6, estado=$7, cep=$8, valor_aluguel=$9 ";
-        sql += "WHERE id=$10";
+        sql += "SET nome=$1$, cnpj=$2$, telefone=$3$, endereco=$4$, numero=$5$, cidade=$6$, estado=$7$, cep=$8$, valor_aluguel=$9$ ";
+        sql += "WHERE id=$10$";
         
         CustomPrepareStatement prepare = new CustomPrepareStatement(sql);
         
@@ -187,7 +187,7 @@ public class CondominioDAO {
         Connection conn = factoryConn.getConnection();
         int rowsAffected = 0;
         
-        String sql = "DELETE FROM condominio WHERE id=$1";
+        String sql = "DELETE FROM condominio WHERE id=$1$";
         
         CustomPrepareStatement prepare = new CustomPrepareStatement(sql);
         

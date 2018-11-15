@@ -5,6 +5,7 @@
  */
 package persistencia;
 
+import dominio.Condominio;
 import dominio.Morador;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -28,6 +29,35 @@ public class MoradorDAO {
     /******** CRUD *********/
     
     
+    private Morador buildMoradorObject(ResultSet rs) throws SQLException {
+            Condominio condominioObj = new Condominio(
+                    rs.getInt("id"),
+                    rs.getString("cnpj"),
+                    rs.getString("nome"),                    
+                    rs.getString("telefone"),
+                    rs.getString("endereco"),
+                    rs.getString("numero"),
+                    rs.getString("cidade"),
+                    rs.getString("estado"),
+                    rs.getInt("cep"),
+                    rs.getFloat("valor_aluguel")
+            );
+        
+            
+            return new Morador(
+                rs.getInt("id"),
+                condominioObj,
+                rs.getString("nome"), 
+                rs.getString("telefone"),
+                rs.getString("email"),
+                rs.getString("cpf"),
+                rs.getInt("bloco"),
+                rs.getInt("andar"),
+                rs.getInt("apartamento")
+            );
+            
+            
+    }
     
     
     /**
@@ -42,14 +72,14 @@ public class MoradorDAO {
         int rowsAffected = 0;
         
         String sql = "INSERT INTO morador (id, condominio_id, nome, telefone, email, cpf, bloco, andar, apartamento) ";
-        sql += "VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)";
+        sql += "VALUES ($1$, $2$, $3$, $4$, $5$, $6$, $7$, $8$, $9$)";
         
         CustomPrepareStatement prepare = new CustomPrepareStatement(sql);
 
         try {
             
             prepare.setInt(1, newID);
-            prepare.setInt(2, morador.getCondominioId());
+            prepare.setInt(2, morador.getCondominio().getId());
             prepare.setString(3, morador.getNome());
             prepare.setString(4, morador.getTelefone());
             prepare.setString(5, morador.getEmail());
@@ -86,7 +116,9 @@ public class MoradorDAO {
         
         Connection conn = factoryConn.getConnection();
         Morador objMorador = null;
-        String sql = "SELECT * FROM morador WHERE id=$1";
+        String sql = "SELECT m.id, m.nome, m.telefone, m.email, m.cpf, m.bloco, m.andar, m.apartamento, ";
+        sql += "c.id as condominio_id, c.cnpj, c.nome as nome_c, c.telefone as telefone_c, c.endereco, c.numero, c.cidade, c.estado, c.cep, c.valor_aluguel ";
+        sql += "FROM morador m, condominio c WHERE c.id=m.condominio_id AND m.id=$1$";
         
         CustomPrepareStatement prepare = new CustomPrepareStatement(sql);
         
@@ -96,18 +128,7 @@ public class MoradorDAO {
 
             ResultSet rs = prepare.executeQuery(conn);
             
-            objMorador = new Morador(
-                rs.getInt("id"),
-                rs.getInt("condominio_id"),
-                rs.getString("nome"), 
-                rs.getString("telefone"),
-                rs.getString("email"),
-                rs.getString("cpf"),
-                rs.getInt("bloco"),
-                rs.getInt("andar"),
-                rs.getInt("apartamento")
-            );
-
+            objMorador = buildMoradorObject(rs);
 
             // close connection
             factoryConn.closeConnection();
@@ -129,7 +150,9 @@ public class MoradorDAO {
         Connection conn = factoryConn.getConnection();
         ArrayList<Morador> moradorArr = new ArrayList<>();
         
-        String sql = "SELECT * FROM morador WHERE bloco=$1";
+        String sql = "SELECT m.id, m.nome, m.telefone, m.email, m.cpf, m.bloco, m.andar, m.apartamento, ";
+        sql += "c.id as condominio_id, c.cnpj, c.nome as nome_c, c.telefone as telefone_c, c.endereco, c.numero, c.cidade, c.estado, c.cep, c.valor_aluguel ";
+        sql += "FROM morador m, condominio c WHERE c.id=m.condominio_id AND bloco=$1$";
         
         CustomPrepareStatement prepare = new CustomPrepareStatement(sql);
         
@@ -141,17 +164,7 @@ public class MoradorDAO {
             
             // loop through the result set
             while (rs.next()) {
-                moradorArr.add(new Morador(
-                    rs.getInt("id"),
-                    rs.getInt("condominio_id"),
-                    rs.getString("nome"), 
-                    rs.getString("telefone"),
-                    rs.getString("email"),
-                    rs.getString("cpf"),
-                    rs.getInt("bloco"),
-                    rs.getInt("andar"),
-                    rs.getInt("apartamento")
-                ));
+                moradorArr.add(buildMoradorObject(rs));
             }
 
             // close connection
@@ -177,14 +190,14 @@ public class MoradorDAO {
 
         String sql = "";
         sql += "UPDATE morador ";
-        sql += "SET condominio_id=$1, nome=$2, telefone=$3, email=$4, cpf=$5, bloco=$6, andar=$7, apartamento=$8 ";
-        sql += "WHERE id=$9";
+        sql += "SET condominio_id=$1$, nome=$2$, telefone=$3$, email=$4$, cpf=$5$, bloco=$6$, andar=$7$, apartamento=$8$ ";
+        sql += "WHERE id=$9$";
         
         CustomPrepareStatement prepare = new CustomPrepareStatement(sql);
         
         try {
             
-            prepare.setInt(1, morador.getCondominioId());
+            prepare.setInt(1, morador.getCondominio().getId());
             prepare.setString(2, morador.getNome());
             prepare.setString(3, morador.getTelefone());
             prepare.setString(4, morador.getEmail());
@@ -220,7 +233,7 @@ public class MoradorDAO {
         Connection conn = factoryConn.getConnection();
         int rowsAffected = 0;
         
-        String sql = "DELETE FROM morador WHERE id=$1";
+        String sql = "DELETE FROM morador WHERE id=$1$";
         
         CustomPrepareStatement prepare = new CustomPrepareStatement(sql);
         

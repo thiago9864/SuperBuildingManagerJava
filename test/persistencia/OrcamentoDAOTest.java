@@ -5,6 +5,7 @@
  */
 package persistencia;
 
+import dominio.Condominio;
 import dominio.Orcamento;
 import dominio.Sindico;
 import java.util.ArrayList;
@@ -14,11 +15,14 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.FixMethodOrder;
+import org.junit.runners.MethodSorters;
 
 /**
  *
  * @author thiagoalmeida
  */
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class OrcamentoDAOTest {
     
     OrcamentoDAO instance;
@@ -51,7 +55,7 @@ public class OrcamentoDAOTest {
 
     @Test
     public void teste1() {
-        System.out.println("criaOrcamento");
+        System.out.println("**** criaOrcamento");
         Integer newID = maxID+1;
         
         objOrcamento = new Orcamento(
@@ -74,11 +78,11 @@ public class OrcamentoDAOTest {
 
     @Test
     public void teste2() {
-        System.out.println("updateOrcamento");
+        System.out.println("**** updateOrcamento");
 
         objOrcamento = new Orcamento(
             maxID,
-            new Sindico(0, null),
+            new Sindico(0, new Condominio(0)),
             9, 
             2018,
             500.0f,
@@ -98,7 +102,7 @@ public class OrcamentoDAOTest {
 
     @Test
     public void teste3() {
-        System.out.println("readOrcamento");
+        System.out.println("**** readOrcamento");
        
         Orcamento lido = instance.read(maxID);
         
@@ -106,7 +110,7 @@ public class OrcamentoDAOTest {
         
         objOrcamento = new Orcamento(
             maxID,
-            new Sindico(0, null),
+            new Sindico(0, new Condominio(0)),
             9, 
             2018,
             500.0f,
@@ -129,14 +133,14 @@ public class OrcamentoDAOTest {
     
     @Test
     public void teste4() {
-        System.out.println("list Orcamento");
+        System.out.println("**** list Orcamento");
        
         ArrayList<Orcamento> listado = instance.list(9, 2018);//lista do bloco 1
         Orcamento lido = null;
         
         objOrcamento = new Orcamento(
             maxID,
-            new Sindico(0, null),
+            new Sindico(0, new Condominio(0)),
             9, 
             2018,
             500.0f,
@@ -173,7 +177,7 @@ public class OrcamentoDAOTest {
     
     @Test
     public void teste5() {
-        System.out.println("delete Orcamento");
+        System.out.println("**** delete Orcamento");
 
         boolean wasDeleted = instance.delete(maxID);
          

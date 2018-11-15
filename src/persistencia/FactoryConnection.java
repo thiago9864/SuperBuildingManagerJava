@@ -66,7 +66,7 @@ public class FactoryConnection {
                     System.out.println("The driver name is " + meta.getDriverName());
                     System.out.println("A new database has been created.");
                 } else {
-                    System.out.println("A database already exists.");
+                    //System.out.println("A database already exists.");
                 }
                 
             }

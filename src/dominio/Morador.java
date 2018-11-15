@@ -13,7 +13,7 @@ package dominio;
 public class Morador {
     
     private Integer id;
-    private Integer condominio_id;
+    private Condominio condominio;
     private String nome;
     private String telefone;
     private String email;
@@ -22,9 +22,14 @@ public class Morador {
     private Integer andar;
     private Integer apartamento;
 
-    public Morador(Integer id, Integer condominio_id, String nome, String telefone, String email, String cpf, Integer bloco, Integer andar, Integer apartamento) {
+    public Morador(Integer id, Condominio condominio) {
         this.id = id;
-        this.condominio_id = condominio_id;
+        this.condominio = condominio;
+    }
+
+    public Morador(Integer id, Condominio condominio, String nome, String telefone, String email, String cpf, Integer bloco, Integer andar, Integer apartamento) {
+        this.id = id;
+        this.condominio = condominio;
         this.nome = nome;
         this.telefone = telefone;
         this.email = email;
@@ -43,14 +48,15 @@ public class Morador {
         this.id = id;
     }
 
-    public Integer getCondominioId() {
-        return condominio_id;
+    public Condominio getCondominio() {
+        return condominio;
     }
 
-    public void setCondominioId(Integer condominio_id) {
-        this.condominio_id = condominio_id;
+    public void setCondominio(Condominio condominio) {
+        this.condominio = condominio;
     }
 
+    
     public String getNome() {
         return nome;
     }

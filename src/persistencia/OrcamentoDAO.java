@@ -77,7 +77,7 @@ public class OrcamentoDAO {
         int rowsAffected = 0;
         
         String sql = "INSERT INTO orcamento (id, sindico_id, mes, ano, custo, renda, saldo) ";
-        sql += "VALUES ($1, $2, $3, $4, $5, $6, $7)";
+        sql += "VALUES ($1$, $2$, $3$, $4$, $5$, $6$, $7$)";
         
         CustomPrepareStatement prepare = new CustomPrepareStatement(sql);
 
@@ -124,7 +124,7 @@ public class OrcamentoDAO {
         sql += "s.id as sindico_id, s.nome as nome_s, s.cpf, s.telefone as telefone_s, s.email, ";
         sql += "c.id as condominio_id, c.nome as nome_c, c.cnpj, c.telefone as telefone_c, c.endereco, c.numero, c.cidade, c.estado, c.cep, c.valor_aluguel ";
         sql += "FROM orcamento o, sindico s, condominio c ";
-        sql += "WHERE s.id=o.sindico_id AND c.id=s.condominio_id AND o.id=$1";
+        sql += "WHERE s.id=o.sindico_id AND c.id=s.condominio_id AND o.id=$1$";
         
         CustomPrepareStatement prepare = new CustomPrepareStatement(sql);
 
@@ -163,7 +163,7 @@ public class OrcamentoDAO {
         sql += "s.id as sindico_id, s.nome as nome_s, s.cpf, s.telefone as telefone_s, s.email, ";
         sql += "c.id as condominio_id, c.nome as nome_c, c.cnpj, c.telefone as telefone_c, c.endereco, c.numero, c.cidade, c.estado, c.cep, c.valor_aluguel ";
         sql += "FROM orcamento o, sindico s, condominio c ";
-        sql += "WHERE s.id=o.sindico_id AND c.id=s.condominio_id AND o.mes=$1 AND o.ano=$2";
+        sql += "WHERE s.id=o.sindico_id AND c.id=s.condominio_id AND o.mes=$1$ AND o.ano=$2$";
         
         CustomPrepareStatement prepare = new CustomPrepareStatement(sql);
         
@@ -203,8 +203,8 @@ public class OrcamentoDAO {
 
         String sql = "";
         sql += "UPDATE orcamento SET ";
-        sql += "sindico_id=$1, mes=$2, ano=$3, custo=$4, renda=$5, saldo=$6 ";
-        sql += "WHERE id=$7";
+        sql += "sindico_id=$1$, mes=$2$, ano=$3$, custo=$4$, renda=$5$, saldo=$6$ ";
+        sql += "WHERE id=$7$";
         
         CustomPrepareStatement prepare = new CustomPrepareStatement(sql);
         
@@ -244,7 +244,7 @@ public class OrcamentoDAO {
         Connection conn = factoryConn.getConnection();
         int rowsAffected = 0;
         
-        String sql = "DELETE FROM orcamento WHERE id=$1";
+        String sql = "DELETE FROM orcamento WHERE id=$1$";
         
         CustomPrepareStatement prepare = new CustomPrepareStatement(sql);
         
