@@ -19,6 +19,10 @@ public class Orcamento {
     private Float renda;
     private Float saldo; 
 
+    public Orcamento(Integer id) {
+        this.id = id;
+    }
+
     public Orcamento(Integer id, Sindico sindico, Integer mes, Integer ano, Float custo, Float renda, Float saldo) {
         this.id = id;
         this.sindico = sindico;

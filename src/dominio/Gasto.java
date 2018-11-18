@@ -14,8 +14,8 @@ import java.util.Date;
 public class Gasto extends ObjetoFinanceiro {
     private Date dataPagamento;
 
-    public Gasto(Date dataPagamento, float valor, String descricao) {
-        super(valor, descricao);
+    public Gasto(Date dataPagamento, Integer id, Orcamento orcamento, TipoFinanca tipo_financa, float valor, String descricao) {
+        super(id, orcamento, tipo_financa, valor, descricao);
         this.dataPagamento = dataPagamento;
     }
 

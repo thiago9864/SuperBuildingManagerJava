@@ -29,7 +29,7 @@ public class OrcamentoDAO {
     /******** CRUD *********/
     
     
-    private Orcamento buildOrcamentoObject(ResultSet rs) throws SQLException {
+    protected Orcamento buildOrcamentoObject(ResultSet rs) throws SQLException {
         
         Condominio objCondominio = new Condominio(
                 rs.getInt("condominio_id"),
@@ -53,8 +53,18 @@ public class OrcamentoDAO {
                 rs.getString("email")
             );
             
+            //usa "boleto_id" ou "id"
+            Integer id = -1;
+            
+            try {
+                id = rs.getInt("orcamento_id");
+            } catch (SQLException e){
+                System.out.println("orcamento_id not found, using id, SQLException: " + e.getMessage());
+                id = rs.getInt("id");
+            }
+            
             return new Orcamento(
-                rs.getInt("id"),
+                id,
                 objSindico,
                 rs.getInt("mes"), 
                 rs.getInt("ano"),

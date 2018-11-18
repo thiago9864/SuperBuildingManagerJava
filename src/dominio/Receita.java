@@ -13,13 +13,14 @@ import java.util.Date;
  */
 public class Receita extends ObjetoFinanceiro {
     private Date dataRecebimento;
-    private Boleto boleto;
+    private Integer boleto_id;
 
-    public Receita(Date dataRecebimento, float valor, String descricao) {
-        super(valor, descricao);
+    public Receita(Date dataRecebimento, Integer boleto, Integer id, Orcamento orcamento, TipoFinanca tipo_financa, float valor, String descricao) {
+        super(id, orcamento, tipo_financa, valor, descricao);
         this.dataRecebimento = dataRecebimento;
+        this.boleto_id = boleto_id;
     }
-
+    
     public Date getDataRecebimento() {
         return dataRecebimento;
     }
@@ -28,11 +29,11 @@ public class Receita extends ObjetoFinanceiro {
         this.dataRecebimento = dataRecebimento;
     }
 
-    public Boleto getBoleto() {
-        return boleto;
+    public Integer getBoletoId() {
+        return boleto_id;
     }
 
-    public void setBoleto(Boleto boleto) {
-        this.boleto = boleto;
+    public void setBoletoId(Integer boleto_id) {
+        this.boleto_id = boleto_id;
     }
 }

@@ -34,7 +34,7 @@ public class SindicoDAO {
         boolean resultado = false;
         Connection conn = factoryConn.getConnection();
         
-        String sql = "SELECT * FROM sindico WHERE usuario=$1 AND senha=$2";
+        String sql = "SELECT * FROM sindico WHERE usuario=$1$ AND senha=$2$";
         
         CustomPrepareStatement prepare = new CustomPrepareStatement(sql);
         
@@ -114,7 +114,7 @@ public class SindicoDAO {
         
 
         String sql = "INSERT INTO sindico (id, nome, cpf, telefone, email, usuario, senha, condominio_id) ";
-        sql += "VALUES ($1, $2, $3, $4, $5, $6, $7, $8)";
+        sql += "VALUES ($1$, $2$, $3$, $4$, $5$, $6$, $7$, $8$)";
         
         CustomPrepareStatement prepare = new CustomPrepareStatement(sql);
         
@@ -160,7 +160,7 @@ public class SindicoDAO {
         String sql = "SELECT s.id, s.nome, s.cpf, s.telefone, s.email, s.usuario, s.senha, ";
         sql += "c.id as id_condominio, c.nome as nome_c, c.cnpj, c.telefone as telefone_c, c.endereco, c.numero, c.cidade, c.estado, c.cep, c.valor_aluguel ";
         sql += "FROM sindico s, condominio c ";
-        sql += "WHERE s.id=$1";
+        sql += "WHERE s.id=$1$";
         
         CustomPrepareStatement prepare = new CustomPrepareStatement(sql);
         
@@ -195,8 +195,8 @@ public class SindicoDAO {
         String sql = "";
         
         sql += "UPDATE sindico ";
-        sql += "SET nome=$1, cpf=$2, telefone=$3, email=$4, usuario=$5, senha=$6, condominio_id=$7 ";
-        sql += "WHERE id=$8";
+        sql += "SET nome=$1$, cpf=$2$, telefone=$3$, email=$4$, usuario=$5$, senha=$6$, condominio_id=$7$ ";
+        sql += "WHERE id=$8$";
         
         CustomPrepareStatement prepare = new CustomPrepareStatement(sql);
         
@@ -234,7 +234,7 @@ public class SindicoDAO {
         Connection conn = factoryConn.getConnection();
         int rowsAffected = 0;
         
-        String sql = "DELETE FROM sindico WHERE id=$1";
+        String sql = "DELETE FROM sindico WHERE id=$1$";
        
         CustomPrepareStatement prepare = new CustomPrepareStatement(sql);
         

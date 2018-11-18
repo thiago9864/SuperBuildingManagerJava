@@ -76,19 +76,20 @@ public class BoletoDAO {
             System.out.println(e.getMessage());
         }
         
+        
         return new Boleto(
-                    rs.getInt("id"),
-                    objMorador,
-                    objStatusBoleto,                    
-                    rs.getString("banco"),
-                    rs.getString("codigo"),
-                    rs.getFloat("valor"),
-                    rs.getFloat("juros"),
-                    rs.getFloat("desconto"),
-                    rs.getFloat("multa"),
-                    data_vencimento,
-                    rs.getBoolean("is_segunda_via")
-            );
+                rs.getInt("id"),
+                objMorador,
+                objStatusBoleto,                    
+                rs.getString("banco"),
+                rs.getString("codigo"),
+                rs.getFloat("valor"),
+                rs.getFloat("juros"),
+                rs.getFloat("desconto"),
+                rs.getFloat("multa"),
+                data_vencimento,
+                rs.getBoolean("is_segunda_via")
+        );
         
     }
     

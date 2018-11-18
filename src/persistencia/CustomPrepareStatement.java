@@ -24,20 +24,36 @@ public class CustomPrepareStatement {
     }
     
     public void setInt(Integer indice, Integer valor){
-        this.sql = this.sql.replace("$" + indice.toString() + "$", valor.toString());
+        if(valor != null){
+            this.sql = this.sql.replace("$" + indice.toString() + "$", valor.toString());
+        } else {
+            this.sql = this.sql.replace("$" + indice.toString() + "$", "NULL");
+        }
     }
     
     public void setString(Integer indice, String valor){
-        this.sql = this.sql.replace("$" + indice.toString() + "$", "'" + valor + "'");
+        if(valor != null){
+            this.sql = this.sql.replace("$" + indice.toString() + "$", "'" + valor + "'");
+        } else {
+            this.sql = this.sql.replace("$" + indice.toString() + "$", "NULL");
+        }
     }
     
     public void setFloat(Integer indice, Float valor){
-        this.sql = this.sql.replace("$" + indice.toString() + "$", valor.toString());
+        if(valor != null){
+            this.sql = this.sql.replace("$" + indice.toString() + "$", valor.toString());
+        } else {
+            this.sql = this.sql.replace("$" + indice.toString() + "$", "NULL");
+        }
     }
     
     public void setDate(Integer indice, Date data){
         SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        this.sql = this.sql.replace("$" + indice.toString() + "$", "'" + fmt.format(data) + "'");
+        if(data != null){
+            this.sql = this.sql.replace("$" + indice.toString() + "$", "'" + fmt.format(data) + "'");
+        } else {
+            this.sql = this.sql.replace("$" + indice.toString() + "$", "NULL");
+        }
     }
     
     public void setBoolean(Integer indice, boolean valor){

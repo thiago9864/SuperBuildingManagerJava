@@ -202,7 +202,7 @@ public class BoletoDAOTest {
     
     @Test
     public void teste5() {
-        System.out.println("**** delete Orcamento");
+        System.out.println("**** delete Boleto");
 
         boolean wasDeleted = instance.delete(maxID);
          
