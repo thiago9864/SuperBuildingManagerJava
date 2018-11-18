@@ -12,12 +12,42 @@ import java.util.Date;
  * @author thiagoalmeida
  */
 public class ObjetoFinanceiro {
+    private Integer id;
+    private Orcamento orcamento;
+    private TipoFinanca tipo_financa;
     private float valor;
     private String descricao;
 
-    public ObjetoFinanceiro(float valor, String descricao) {
+    public ObjetoFinanceiro(Integer id, Orcamento orcamento, TipoFinanca tipo_financa, float valor, String descricao) {
+        this.id = id;
+        this.orcamento = orcamento;
+        this.tipo_financa = tipo_financa;
         this.valor = valor;
         this.descricao = descricao;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Orcamento getOrcamento() {
+        return orcamento;
+    }
+
+    public void setOrcamento(Orcamento orcamento) {
+        this.orcamento = orcamento;
+    }
+
+    public TipoFinanca getTipoFinanca() {
+        return tipo_financa;
+    }
+
+    public void setTipoFinanca(TipoFinanca tipo_financa) {
+        this.tipo_financa = tipo_financa;
     }
 
     public float getValor() {
@@ -35,5 +65,7 @@ public class ObjetoFinanceiro {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
+
+     
     
 }

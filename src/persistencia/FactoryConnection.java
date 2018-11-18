@@ -66,7 +66,7 @@ public class FactoryConnection {
                     System.out.println("The driver name is " + meta.getDriverName());
                     System.out.println("A new database has been created.");
                 } else {
-                    System.out.println("A database already exists.");
+                    //System.out.println("A database already exists.");
                 }
                 
             }
@@ -139,35 +139,36 @@ public class FactoryConnection {
                     statement.close();
 		}
 	}
-   }
+    }
     
     
-   public Integer maxIDFromTable(String table_name){
-       String sql = "SELECT id FROM " + table_name;
-        Statement stmt;
-        Connection conn = getConnection();
-        ArrayList<Integer> id_list = new ArrayList<>();
-        
-        try {
-             stmt  = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(sql);
-             
-             while (rs.next()) {
-                 id_list.add(rs.getInt("id"));
-             }
+    public Integer maxIDFromTable(String table_name){
+        String sql = "SELECT id FROM " + table_name;
+         Statement stmt;
+         Connection conn = getConnection();
+         ArrayList<Integer> id_list = new ArrayList<>();
 
-            // close statement
-            stmt.close();
-                
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        } 
-        if(id_list.isEmpty()){
-            return -1;
-        } else {
-            return Collections.max(id_list);
-        }
-        
-   }
+         try {
+              stmt  = conn.createStatement();
+              ResultSet rs = stmt.executeQuery(sql);
+
+              while (rs.next()) {
+                  id_list.add(rs.getInt("id"));
+              }
+
+             // close statement
+             stmt.close();
+
+         } catch (SQLException e) {
+             System.out.println(e.getMessage());
+         } 
+         if(id_list.isEmpty()){
+             return -1;
+         } else {
+             return Collections.max(id_list);
+         }
+
+    }
+    
     
 }

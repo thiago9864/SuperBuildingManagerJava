@@ -5,7 +5,6 @@
  */
 package dominio;
 
-import java.util.ArrayList;
 
 /**
  *
@@ -14,23 +13,32 @@ import java.util.ArrayList;
 public class Morador {
     
     private Integer id;
+    private Condominio condominio;
     private String nome;
-    private String cpf;
     private String telefone;
     private String email;
-    private String apartamento;
+    private String cpf;
     private Integer bloco;
-    private ArrayList<Boleto> boletos;
+    private Integer andar;
+    private Integer apartamento;
 
-    public Morador(Integer id, String nome, String cpf, String telefone, String email, String apartamento, Integer bloco) {
+    public Morador(Integer id, Condominio condominio) {
         this.id = id;
+        this.condominio = condominio;
+    }
+
+    public Morador(Integer id, Condominio condominio, String nome, String telefone, String email, String cpf, Integer bloco, Integer andar, Integer apartamento) {
+        this.id = id;
+        this.condominio = condominio;
         this.nome = nome;
-        this.cpf = cpf;
         this.telefone = telefone;
         this.email = email;
-        this.apartamento = apartamento;
+        this.cpf = cpf;
         this.bloco = bloco;
+        this.andar = andar;
+        this.apartamento = apartamento;
     }
+
 
     public Integer getId() {
         return id;
@@ -40,20 +48,21 @@ public class Morador {
         this.id = id;
     }
 
+    public Condominio getCondominio() {
+        return condominio;
+    }
+
+    public void setCondominio(Condominio condominio) {
+        this.condominio = condominio;
+    }
+
+    
     public String getNome() {
         return nome;
     }
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
     }
 
     public String getTelefone() {
@@ -72,12 +81,12 @@ public class Morador {
         this.email = email;
     }
 
-    public String getApartamento() {
-        return apartamento;
+    public String getCpf() {
+        return cpf;
     }
 
-    public void setApartamento(String apartamento) {
-        this.apartamento = apartamento;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public Integer getBloco() {
@@ -88,12 +97,22 @@ public class Morador {
         this.bloco = bloco;
     }
 
-    public ArrayList<Boleto> getBoletos() {
-        return boletos;
+    public Integer getAndar() {
+        return andar;
     }
 
-    public void setBoletos(ArrayList<Boleto> boletos) {
-        this.boletos = boletos;
+    public void setAndar(Integer andar) {
+        this.andar = andar;
     }
+
+    public Integer getApartamento() {
+        return apartamento;
+    }
+
+    public void setApartamento(Integer apartamento) {
+        this.apartamento = apartamento;
+    }
+    
+    
 
 }

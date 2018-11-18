@@ -12,14 +12,20 @@ package dominio;
 public class Orcamento {
     
     private Integer id;
+    private Sindico sindico;
     private Integer mes;
     private Integer ano;
     private Float custo;
     private Float renda;
     private Float saldo; 
 
-    public Orcamento(Integer id, Integer mes, Integer ano, Float custo, Float renda, Float saldo) {
+    public Orcamento(Integer id) {
         this.id = id;
+    }
+
+    public Orcamento(Integer id, Sindico sindico, Integer mes, Integer ano, Float custo, Float renda, Float saldo) {
+        this.id = id;
+        this.sindico = sindico;
         this.mes = mes;
         this.ano = ano;
         this.custo = custo;
@@ -27,12 +33,21 @@ public class Orcamento {
         this.saldo = saldo;
     }
 
+    
     public Integer getId() {
         return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Sindico getSindico() {
+        return sindico;
+    }
+
+    public void setSindico(Sindico sindico) {
+        this.sindico = sindico;
     }
 
     public Integer getMes() {

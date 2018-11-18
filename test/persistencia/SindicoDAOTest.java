@@ -5,6 +5,7 @@
  */
 package persistencia;
 
+import dominio.Condominio;
 import dominio.Sindico;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -86,10 +87,10 @@ public class SindicoDAOTest {
     public void teste2() {
         System.out.println("criaSindico");
         Integer newID = maxID+1;
-           
+        
         objSindico = new Sindico(
                 newID,
-                0,
+                new Condominio(0),
                 "nome",
                 "cpf",
                 "telefone",
@@ -98,7 +99,7 @@ public class SindicoDAOTest {
                 "senha"
         );
         
-        Integer idInserted = instance.createSindico(objSindico);
+        Integer idInserted = instance.create(objSindico);
         
         System.out.println("idInserted: " + idInserted);
         
@@ -114,7 +115,7 @@ public class SindicoDAOTest {
 
         objSindico = new Sindico(
                 maxID,
-                0,
+                new Condominio(0),
                 "nome",
                 "112233445566",
                 "(032) 9999-9999",
@@ -123,7 +124,7 @@ public class SindicoDAOTest {
                 "senha"
         );
         
-        boolean wasUpdated = instance.updateSindico(objSindico);
+        boolean wasUpdated = instance.update(objSindico);
         
         System.out.println("wasUpdated: " + wasUpdated);
         
@@ -139,11 +140,11 @@ public class SindicoDAOTest {
     public void teste4() {
         System.out.println("readSindico");
        
-        Sindico lido = instance.readSindico(maxID);
+        Sindico lido = instance.read(maxID);
         
         objSindico = new Sindico(
                 maxID,
-                0,
+                new Condominio(0),
                 "nome",
                 "112233445566",
                 "(032) 9999-9999",
@@ -155,7 +156,7 @@ public class SindicoDAOTest {
             fail("objSindico == null");
         } else {
             assertEquals(objSindico.getId(), lido.getId());
-            assertEquals(objSindico.getCondominioId(), lido.getCondominioId());
+            assertEquals(objSindico.getCondominio().getId(), lido.getCondominio().getId());
             assertEquals(objSindico.getNome(), lido.getNome());
             assertEquals(objSindico.getCpf(), lido.getCpf());
             assertEquals(objSindico.getTelefone(), lido.getTelefone());
@@ -171,7 +172,7 @@ public class SindicoDAOTest {
     public void teste5() {
         System.out.println("deleteSindico");
 
-        boolean wasDeleted = instance.deleteSindico(maxID);
+        boolean wasDeleted = instance.delete(maxID);
          
         assertEquals(true, wasDeleted);
     }
