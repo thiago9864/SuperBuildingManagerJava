@@ -36,15 +36,15 @@ public class ItemFinancaDAO {
         OrcamentoDAO orcamentoDAO = new OrcamentoDAO();
         
         try {
-            dataRecebimento = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(rs.getString("data"));
+            dataRecebimento = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(rs.getString("data_item"));
         } catch (ParseException e){
             System.out.println(e.getMessage());
         } 
         
         TipoFinanca tipoFinanca = new TipoFinanca(
                 rs.getInt("id"),
-                rs.getString("nome_f"),
-                rs.getString("descricao_f"),
+                rs.getString("nome_t"),
+                rs.getString("descricao_t"),
                 rs.getBoolean("is_renda")
         );
         
@@ -65,7 +65,7 @@ public class ItemFinancaDAO {
         Date dataPagamento = null;
         
         try {
-            dataPagamento = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(rs.getString("data"));
+            dataPagamento = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(rs.getString("data_item"));
         } catch (ParseException e){
             System.out.println(e.getMessage());
         }
@@ -74,15 +74,15 @@ public class ItemFinancaDAO {
         
         TipoFinanca tipoFinanca = new TipoFinanca(
                 rs.getInt("id"),
-                rs.getString("nome_f"),
-                rs.getString("descricao_f"),
+                rs.getString("nome_t"),
+                rs.getString("descricao_t"),
                 rs.getBoolean("is_renda")
         );
         
         return new Gasto(
                dataPagamento,
                rs.getInt("id"),
-               orcamentoDAO.read(rs.getInt("orcamento_id")),
+               orcamentoDAO.buildOrcamentoObject(rs),
                tipoFinanca,
                rs.getFloat("valor"),
                rs.getString("descricao")
@@ -128,12 +128,14 @@ public class ItemFinancaDAO {
             
             rowsAffected = prepare.executeUpdate(conn);            
              
-            // close connection
-            factoryConn.closeConnection();
-            
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        
+        // close connection
+        factoryConn.closeConnection();
+        
         if(rowsAffected > 0){
             return newID;
         } else {
@@ -154,16 +156,16 @@ public class ItemFinancaDAO {
         String sql = "SELECT f.id, f.boleto_id, f.data_item, f.valor, f.descricao, ";
         
         //tipo financa
-        sql += "t.id as tipo_financa_id, t.nome_t, t.descricao_t, t.is_renda  ";
+        sql += "t.id as tipo_financa_id, t.nome as nome_t, t.descricao as descricao_t, t.is_renda, ";
         
         //orcamento
-        sql = "SELECT o.id as orcamento_id, o.mes, o.ano, o.custo, o.renda, o.saldo, ";
+        sql += "o.id as orcamento_id, o.mes, o.ano, o.custo, o.renda, o.saldo, ";
         sql += "s.id as sindico_id, s.nome as nome_s, s.cpf, s.telefone as telefone_s, s.email, ";
         sql += "c.id as condominio_id, c.nome as nome_c, c.cnpj, c.telefone as telefone_c, c.endereco, c.numero, c.cidade, c.estado, c.cep, c.valor_aluguel ";
         
         sql += "FROM item_financa f, tipo_financa t, orcamento o, sindico s, condominio c ";
         
-        sql += "WHERE t.id=f.tipo_financa_id AND o.id=f.orcamento_id AND s.id=o.sindico_id AND c.id=s.condominio_id AND o.id=$1$";
+        sql += "WHERE t.id=f.tipo_financa_id AND o.id=f.orcamento_id AND s.id=o.sindico_id AND c.id=s.condominio_id AND f.id=$1$";
         
         CustomPrepareStatement prepare = new CustomPrepareStatement(sql);
         
@@ -178,13 +180,13 @@ public class ItemFinancaDAO {
             } else {
                 objeto = buildGastoObject(rs);
             }
-
-            // close connection
-            factoryConn.closeConnection();
                 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         } 
+        
+        // close connection
+        factoryConn.closeConnection();
         
         return objeto;
     }
@@ -236,10 +238,10 @@ public class ItemFinancaDAO {
         sql = "SELECT f.id, f.boleto_id, f.data_item, f.valor, f.descricao, ";
         
         //tipo financa
-        sql += "t.id as tipo_financa_id, t.nome_t, t.descricao_t, t.is_renda  ";
+        sql += "t.id as tipo_financa_id, t.nome as nome_t, t.descricao as descricao_t, t.is_renda,  ";
         
         //orcamento
-        sql = "SELECT o.id as orcamento_id, o.mes, o.ano, o.custo, o.renda, o.saldo, ";
+        sql += "o.id as orcamento_id, o.mes, o.ano, o.custo, o.renda, o.saldo, ";
         
         //sindico
         sql += "s.id as sindico_id, s.nome as nome_s, s.cpf, s.telefone as telefone_s, s.email, ";
@@ -264,10 +266,10 @@ public class ItemFinancaDAO {
             sql += "BETWEEN $1$ AND $2$";
         }
         else if(inicio != null && fim == null){
-            sql += "AND f.data > $1$";
+            sql += "AND f.data_item > $1$";
         }
         else if(fim != null){
-            sql += "AND f.data < $2$";
+            sql += "AND f.data_item < $2$";
         }
         
         CustomPrepareStatement prepare = new CustomPrepareStatement(sql);
@@ -287,13 +289,13 @@ public class ItemFinancaDAO {
                     objetoArr.add(buildGastoObject(rs));
                 }
             }
-
-            // close connection
-            factoryConn.closeConnection();
-                
+     
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         } 
+        
+        // close connection
+        factoryConn.closeConnection();
         
         return objetoArr;
     }
@@ -337,8 +339,7 @@ public class ItemFinancaDAO {
              
             rowsAffected = prepare.executeUpdate(conn);
             
-            // close connection
-            factoryConn.closeConnection();
+
             
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -346,6 +347,10 @@ public class ItemFinancaDAO {
         if(rowsAffected > 0){
             return true;
         }
+        
+        // close connection
+        factoryConn.closeConnection();
+            
         return false;
     }
     
@@ -369,8 +374,6 @@ public class ItemFinancaDAO {
             rowsAffected = prepare.executeUpdate(conn);
             System.out.println("rowsAffected: " + rowsAffected);
             
-            // close connection
-            factoryConn.closeConnection();
                 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -378,6 +381,10 @@ public class ItemFinancaDAO {
         if(rowsAffected > 0){
             return true;
         }
+        
+        // close connection
+        factoryConn.closeConnection();
+            
         return false;
         
     }
