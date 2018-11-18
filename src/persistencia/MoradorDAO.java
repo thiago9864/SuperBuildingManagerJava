@@ -90,13 +90,14 @@ public class MoradorDAO {
              
             rowsAffected = prepare.executeUpdate(conn);
             System.out.println("rowsAffected: " + rowsAffected);
-             
-            // close connection
-            factoryConn.closeConnection();
                 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        
+        // close connection
+        factoryConn.closeConnection();
+            
         if(rowsAffected > 0){
             //retorna o id do condominio criado
             return newID;
@@ -130,12 +131,13 @@ public class MoradorDAO {
             
             objMorador = buildMoradorObject(rs);
 
-            // close connection
-            factoryConn.closeConnection();
-                
+     
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         } 
+        
+        // close connection
+        factoryConn.closeConnection();
         
         return objMorador;
     }
@@ -166,14 +168,14 @@ public class MoradorDAO {
             while (rs.next()) {
                 moradorArr.add(buildMoradorObject(rs));
             }
-
-            // close connection
-            factoryConn.closeConnection();
-                
+   
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         } 
         
+        // close connection
+        factoryConn.closeConnection();
+            
         return moradorArr;
     }
     
@@ -210,12 +212,15 @@ public class MoradorDAO {
             rowsAffected = prepare.executeUpdate(conn);
             System.out.println("rowsAffected: " + rowsAffected);
             
-            // close connection
-            factoryConn.closeConnection();
+
             
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+
+        // close connection
+        factoryConn.closeConnection();
+            
         if(rowsAffected > 0){
             return true;
         }
@@ -244,12 +249,14 @@ public class MoradorDAO {
             rowsAffected = prepare.executeUpdate(conn);
             System.out.println("rowsAffected: " + rowsAffected);
             
-            // close connection
-            factoryConn.closeConnection();
-                
+   
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        
+        // close connection
+        factoryConn.closeConnection();
+        
         if(rowsAffected > 0){
             return true;
         }
