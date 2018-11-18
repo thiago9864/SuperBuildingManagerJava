@@ -7,6 +7,7 @@ package gui;
 
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.event.ListSelectionListener;
 
 /**
  *
@@ -30,16 +31,24 @@ public class Moradores extends CustomJPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDialog1 = new javax.swing.JDialog();
+        jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jSplitPane1 = new javax.swing.JSplitPane();
         jPainelListMoradores = new javax.swing.JPanel();
         jSplitPane3 = new javax.swing.JSplitPane();
         jLabelMoradores = new javax.swing.JLabel();
+        jSplitPane2 = new javax.swing.JSplitPane();
         jScrollPanelListaMoradores = new javax.swing.JScrollPane();
         jListMoradores = new javax.swing.JList<>();
+        jPanel1 = new javax.swing.JPanel();
+        jButtonRemoverMorador = new javax.swing.JButton();
+        jButtonAdicionarMorador = new javax.swing.JButton();
         jTabbedPaneInfoGeral = new javax.swing.JTabbedPane();
-        jScrollPaneInfoMorador = new javax.swing.JScrollPane();
         jTextInfoMorador = new javax.swing.JTextArea();
         jPanelInfoPagamentos = new javax.swing.JPanel();
         jPainelSeletorMeses = new javax.swing.JPanel();
@@ -58,56 +67,141 @@ public class Moradores extends CustomJPanel {
         jLabelAno = new javax.swing.JLabel();
         jComboBoxSelectAno = new javax.swing.JComboBox<>();
         jPanelInfoPagamento = new javax.swing.JPanel();
-        jScrollPaneInfoPagamento = new javax.swing.JScrollPane();
         jTextInfoPagamento = new javax.swing.JTextArea();
         jButtonEmitirBoleto = new javax.swing.JButton();
         jButtonDarBaixa = new javax.swing.JButton();
         jButtonEmitirSegundaVia = new javax.swing.JButton();
         jButtonReturn = new javax.swing.JButton();
 
+        jButton1.setText("Sim");
+
+        jLabel1.setText("Tem certeza que deseja apagar esse Morador?");
+
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 0, 0));
+        jButton2.setText("Não");
+        jButton2.setBorderPainted(false);
+        jButton2.setOpaque(false);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        jLabel2.setText("APÓS APAGADO NÃO HÁ COMO RECUPERAR");
+
+        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
+        jDialog1.getContentPane().setLayout(jDialog1Layout);
+        jDialog1Layout.setHorizontalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog1Layout.createSequentialGroup()
+                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDialog1Layout.createSequentialGroup()
+                        .addGap(89, 89, 89)
+                        .addComponent(jButton1)
+                        .addGap(48, 48, 48)
+                        .addComponent(jButton2))
+                    .addGroup(jDialog1Layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))))
+                .addContainerGap(27, Short.MAX_VALUE))
+        );
+        jDialog1Layout.setVerticalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialog1Layout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addContainerGap())
+        );
+
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        jSplitPane1.setBorder(null);
         jSplitPane1.setDividerLocation(250);
 
+        jSplitPane3.setBorder(null);
         jSplitPane3.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
         jLabelMoradores.setText("Moradores");
         jLabelMoradores.setToolTipText("");
         jSplitPane3.setLeftComponent(jLabelMoradores);
 
+        jSplitPane2.setBorder(null);
+        jSplitPane2.setDividerLocation(394);
+        jSplitPane2.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
+
         jListMoradores.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
+        jListMoradores.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPanelListaMoradores.setViewportView(jListMoradores);
 
-        jSplitPane3.setRightComponent(jScrollPanelListaMoradores);
+        jSplitPane2.setLeftComponent(jScrollPanelListaMoradores);
+
+        jButtonRemoverMorador.setText("Remover");
+
+        jButtonAdicionarMorador.setText("Adicionar");
+        jButtonAdicionarMorador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAdicionarMoradorActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(7, 7, 7)
+                .addComponent(jButtonAdicionarMorador, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonRemoverMorador, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonRemoverMorador)
+                    .addComponent(jButtonAdicionarMorador))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        jSplitPane2.setRightComponent(jPanel1);
+
+        jSplitPane3.setRightComponent(jSplitPane2);
 
         javax.swing.GroupLayout jPainelListMoradoresLayout = new javax.swing.GroupLayout(jPainelListMoradores);
         jPainelListMoradores.setLayout(jPainelListMoradoresLayout);
         jPainelListMoradoresLayout.setHorizontalGroup(
             jPainelListMoradoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 249, Short.MAX_VALUE)
+            .addGap(0, 251, Short.MAX_VALUE)
             .addGroup(jPainelListMoradoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jSplitPane3, javax.swing.GroupLayout.Alignment.TRAILING))
         );
         jPainelListMoradoresLayout.setVerticalGroup(
             jPainelListMoradoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 448, Short.MAX_VALUE)
+            .addGap(0, 450, Short.MAX_VALUE)
             .addGroup(jPainelListMoradoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jSplitPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE))
+                .addComponent(jSplitPane3))
         );
 
         jSplitPane1.setLeftComponent(jPainelListMoradores);
 
-        jTabbedPaneInfoGeral.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
         jTextInfoMorador.setColumns(20);
         jTextInfoMorador.setRows(5);
-        jScrollPaneInfoMorador.setViewportView(jTextInfoMorador);
-
-        jTabbedPaneInfoGeral.addTab("Info", jScrollPaneInfoMorador);
+        jTabbedPaneInfoGeral.addTab("Info", jTextInfoMorador);
 
         jPainelSeletorMeses.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -217,7 +311,7 @@ public class Moradores extends CustomJPanel {
 
         jTextInfoPagamento.setColumns(20);
         jTextInfoPagamento.setRows(5);
-        jScrollPaneInfoPagamento.setViewportView(jTextInfoPagamento);
+        jTextInfoPagamento.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jButtonEmitirBoleto.setText("Emitir boleto");
         jButtonEmitirBoleto.addActionListener(new java.awt.event.ActionListener() {
@@ -235,24 +329,23 @@ public class Moradores extends CustomJPanel {
         jPanelInfoPagamentoLayout.setHorizontalGroup(
             jPanelInfoPagamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelInfoPagamentoLayout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(13, Short.MAX_VALUE)
                 .addGroup(jPanelInfoPagamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPaneInfoPagamento)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelInfoPagamentoLayout.createSequentialGroup()
-                        .addGap(0, 1, Short.MAX_VALUE)
                         .addComponent(jButtonEmitirBoleto, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonDarBaixa, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonEmitirSegundaVia, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButtonEmitirSegundaVia, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextInfoPagamento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         jPanelInfoPagamentoLayout.setVerticalGroup(
             jPanelInfoPagamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelInfoPagamentoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPaneInfoPagamento, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextInfoPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addGroup(jPanelInfoPagamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonEmitirBoleto)
                     .addComponent(jButtonDarBaixa)
@@ -265,7 +358,7 @@ public class Moradores extends CustomJPanel {
         jPanelInfoPagamentosLayout.setHorizontalGroup(
             jPanelInfoPagamentosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelInfoPagamentosLayout.createSequentialGroup()
-                .addContainerGap(34, Short.MAX_VALUE)
+                .addContainerGap(39, Short.MAX_VALUE)
                 .addGroup(jPanelInfoPagamentosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPainelSeletorMeses, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanelInfoPagamento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -278,7 +371,7 @@ public class Moradores extends CustomJPanel {
                 .addComponent(jPainelSeletorMeses, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanelInfoPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         jTabbedPaneInfoGeral.addTab("Pagamentos", jPanelInfoPagamentos);
@@ -304,21 +397,17 @@ public class Moradores extends CustomJPanel {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 828, Short.MAX_VALUE)
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel3Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 480, Short.MAX_VALUE)
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel3Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jButtonReturn.setText("Voltar");
@@ -362,8 +451,19 @@ public class Moradores extends CustomJPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonReturnActionPerformed
 
+    private void jButtonAdicionarMoradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdicionarMoradorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonAdicionarMoradorActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButtonAdicionarMorador;
     private javax.swing.JButton jButtonDarBaixa;
     private javax.swing.JButton jButtonEmitirBoleto;
     private javax.swing.JButton jButtonEmitirSegundaVia;
@@ -379,21 +479,25 @@ public class Moradores extends CustomJPanel {
     private javax.swing.JButton jButtonMonth10;
     private javax.swing.JButton jButtonMonth11;
     private javax.swing.JButton jButtonMonth12;
+    private javax.swing.JButton jButtonRemoverMorador;
     private javax.swing.JButton jButtonReturn;
     private javax.swing.JComboBox<String> jComboBoxSelectAno;
+    private javax.swing.JDialog jDialog1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelAno;
     private javax.swing.JLabel jLabelMoradores;
     private javax.swing.JList<String> jListMoradores;
     private javax.swing.JPanel jPainelListMoradores;
     private javax.swing.JPanel jPainelSeletorMeses;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanelInfoPagamento;
     private javax.swing.JPanel jPanelInfoPagamentos;
-    private javax.swing.JScrollPane jScrollPaneInfoMorador;
-    private javax.swing.JScrollPane jScrollPaneInfoPagamento;
     private javax.swing.JScrollPane jScrollPanelListaMoradores;
     private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JSplitPane jSplitPane2;
     private javax.swing.JSplitPane jSplitPane3;
     private javax.swing.JTabbedPane jTabbedPaneInfoGeral;
     private javax.swing.JTextArea jTextInfoMorador;
@@ -419,6 +523,13 @@ public class Moradores extends CustomJPanel {
         this.jButtonEmitirSegundaVia.addActionListener(listener);
         
         this.jButtonReturn.addActionListener(listener);
+        
+        this.jButtonAdicionarMorador.addActionListener(listener);
+        this.jButtonRemoverMorador.addActionListener(listener);
+    }
+    
+    public void addListSelectionListener(ListSelectionListener listListener){
+        this.jListMoradores.addListSelectionListener(listListener);
     }
 
     public JButton getjButtonDarBaixa() {
@@ -493,6 +604,6 @@ public class Moradores extends CustomJPanel {
     public void setTextInfoPagamentosMorador(String t){
         jTextInfoPagamento.setText(t);
     }
-    
+     
     
 }
