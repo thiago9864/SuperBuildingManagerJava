@@ -46,12 +46,6 @@ public class SindicoDAO {
             
             // loop through the result set
             while (rs.next()) {
-                /*String u = rs.getString("usuario");
-                String s = rs.getString("senha");
-                System.out.println(rs.getString("id"));
-                System.out.println(u);
-                System.out.println(s);*/
-
                 resultado = true;
                 System.out.println("valido!");
             }
@@ -131,14 +125,14 @@ public class SindicoDAO {
             prepare.setInt(8, sindico.getCondominio().getId());
             
             rowsAffected = prepare.executeUpdate(conn);
-            
-             
-            // close connection
-            factoryConn.closeConnection();
-            
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        
+        // close connection
+        factoryConn.closeConnection();
+            
         if(rowsAffected > 0){
             return newID;
         } else {
@@ -171,14 +165,14 @@ public class SindicoDAO {
             ResultSet rs = prepare.executeQuery(conn);
             
             sindicoObj = buildSindicoObject(rs);
-
-            // close connection
-            factoryConn.closeConnection();
-                
+ 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         } 
         
+        // close connection
+        factoryConn.closeConnection();
+            
         return sindicoObj;
     }
     
@@ -213,12 +207,13 @@ public class SindicoDAO {
              
             rowsAffected = prepare.executeUpdate(conn);
             
-            // close connection
-            factoryConn.closeConnection();
-            
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        
+        // close connection
+        factoryConn.closeConnection();
+            
         if(rowsAffected > 0){
             return true;
         }
@@ -244,13 +239,14 @@ public class SindicoDAO {
              
             rowsAffected = prepare.executeUpdate(conn);
             System.out.println("rowsAffected: " + rowsAffected);
-            
-            // close connection
-            factoryConn.closeConnection();
-                
+             
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        
+        // close connection
+        factoryConn.closeConnection();
+            
         if(rowsAffected > 0){
             return true;
         }

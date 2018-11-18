@@ -28,7 +28,12 @@ public class OrcamentoDAO {
     
     /******** CRUD *********/
     
-    
+    /**
+     * Cria objeto de retorno do DAO
+     * @param rs (ResultSet)
+     * @return Orcamento
+     * @throws SQLException 
+     */
     protected Orcamento buildOrcamentoObject(ResultSet rs) throws SQLException {
         
         Condominio objCondominio = new Condominio(
@@ -102,13 +107,14 @@ public class OrcamentoDAO {
             prepare.setFloat(7, orcamento.getSaldo());
              
             rowsAffected = prepare.executeUpdate(conn);
-             
-            // close connection
-            factoryConn.closeConnection();
-                
+  
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        
+        // close connection
+        factoryConn.closeConnection();
+            
         if(rowsAffected > 0){
             //retorna o id do condominio criado
             return newID;
@@ -120,9 +126,9 @@ public class OrcamentoDAO {
             
 
     /**
-     * Metodo que obtem os dados do morador
+     * Metodo que obtem os dados do orcamento
      * @param id (int)
-     * @return (ArrayList Morador)
+     * @return (Orcamento)
      */
     public Orcamento read(Integer id){
         
@@ -145,13 +151,13 @@ public class OrcamentoDAO {
             ResultSet rs = prepare.executeQuery(conn);
             
             objOrcamento = buildOrcamentoObject(rs);
-
-            // close connection
-            factoryConn.closeConnection();
-                
+   
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         } 
+        
+        // close connection
+        factoryConn.closeConnection();
         
         return objOrcamento;
     }
@@ -189,13 +195,13 @@ public class OrcamentoDAO {
                 System.out.println("mes: " + rs.getInt("mes") + ", ano: " + rs.getInt("ano"));
                 orcamentoArr.add(buildOrcamentoObject(rs));
             }
-
-            // close connection
-            factoryConn.closeConnection();
-                
+   
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         } 
+        
+        // close connection
+        factoryConn.closeConnection();
         
         return orcamentoArr;
     }
@@ -231,12 +237,13 @@ public class OrcamentoDAO {
 
             rowsAffected = prepare.executeUpdate(conn);
             
-            // close connection
-            factoryConn.closeConnection();
-            
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        
+        // close connection
+        factoryConn.closeConnection();
+            
         if(rowsAffected > 0){
             return true;
         }
@@ -263,13 +270,14 @@ public class OrcamentoDAO {
             prepare.setInt(1, id);
              
             rowsAffected = prepare.executeUpdate(conn);
-            
-            // close connection
-            factoryConn.closeConnection();
-                
+                 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        
+        // close connection
+        factoryConn.closeConnection();
+        
         if(rowsAffected > 0){
             return true;
         }
