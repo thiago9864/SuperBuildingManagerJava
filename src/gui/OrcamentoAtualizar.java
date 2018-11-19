@@ -55,6 +55,7 @@ public class OrcamentoAtualizar extends CustomJPanel {
         jTextFieldDateYear = new javax.swing.JTextField();
         jLabelFSlash2 = new javax.swing.JLabel();
         jLabelFSlash1 = new javax.swing.JLabel();
+        jButtonSalvar = new javax.swing.JButton();
         jLabelMesAtualizado = new javax.swing.JLabel();
 
         jButtonVoltar.setText("Voltar");
@@ -180,41 +181,50 @@ public class OrcamentoAtualizar extends CustomJPanel {
 
         jLabelFSlash1.setText("/");
 
+        jButtonSalvar.setText("Salvar");
+        jButtonSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSalvarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelGastosLayout = new javax.swing.GroupLayout(jPanelGastos);
         jPanelGastos.setLayout(jPanelGastosLayout);
         jPanelGastosLayout.setHorizontalGroup(
             jPanelGastosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelGastosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanelGastosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelGastosLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabelDescrição)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldDescrição, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelGastosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanelGastosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButtonSalvar)
+                    .addGroup(jPanelGastosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanelGastosLayout.createSequentialGroup()
-                            .addComponent(jLabelValor)
+                            .addGap(10, 10, 10)
+                            .addComponent(jLabelDescrição)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jTextFieldValor, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanelGastosLayout.createSequentialGroup()
-                            .addComponent(jLabelCadastroDe)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jComboBoxReceitaGasto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(188, 188, 188))
-                        .addGroup(jPanelGastosLayout.createSequentialGroup()
-                            .addComponent(jLabelData)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jTextFieldDateDay, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(4, 4, 4)
-                            .addComponent(jLabelFSlash1)
-                            .addGap(3, 3, 3)
-                            .addComponent(jTextFieldDateMonth, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(3, 3, 3)
-                            .addComponent(jLabelFSlash2)
-                            .addGap(4, 4, 4)
-                            .addComponent(jTextFieldDateYear, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(76, 76, 76))))
+                            .addComponent(jTextFieldDescrição, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanelGastosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanelGastosLayout.createSequentialGroup()
+                                .addComponent(jLabelValor)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextFieldValor, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanelGastosLayout.createSequentialGroup()
+                                .addComponent(jLabelCadastroDe)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jComboBoxReceitaGasto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(188, 188, 188))
+                            .addGroup(jPanelGastosLayout.createSequentialGroup()
+                                .addComponent(jLabelData)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextFieldDateDay, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(4, 4, 4)
+                                .addComponent(jLabelFSlash1)
+                                .addGap(3, 3, 3)
+                                .addComponent(jTextFieldDateMonth, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(3, 3, 3)
+                                .addComponent(jLabelFSlash2)
+                                .addGap(4, 4, 4)
+                                .addComponent(jTextFieldDateYear, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(76, 76, 76)))))
                 .addContainerGap(57, Short.MAX_VALUE))
         );
         jPanelGastosLayout.setVerticalGroup(
@@ -240,7 +250,9 @@ public class OrcamentoAtualizar extends CustomJPanel {
                     .addComponent(jTextFieldDateYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelFSlash1)
                     .addComponent(jLabelFSlash2))
-                .addContainerGap(322, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonSalvar)
+                .addContainerGap(284, Short.MAX_VALUE))
         );
 
         jSplitPane1.setRightComponent(jPanelGastos);
@@ -321,9 +333,14 @@ public class OrcamentoAtualizar extends CustomJPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldDateYearActionPerformed
 
+    private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonSalvarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonRemover;
+    private javax.swing.JButton jButtonSalvar;
     private javax.swing.JButton jButtonVoltar;
     private javax.swing.JComboBox<String> jComboBoxReceitaGasto;
     private javax.swing.JLabel jLabelCadastroDe;
@@ -358,6 +375,7 @@ public class OrcamentoAtualizar extends CustomJPanel {
     public void addActionListener(ActionListener listener){
         this.jButtonRemover.addActionListener(listener);
         this.jButtonVoltar.addActionListener(listener);
+        this.jButtonSalvar.addActionListener(listener);
     }
     
     public int getSelectedComboBox(){
@@ -370,6 +388,10 @@ public class OrcamentoAtualizar extends CustomJPanel {
 
     public JButton getjButtonVoltar() {
         return this.jButtonVoltar;
+    }
+    
+    public JButton getjButtonSalvar(){
+        return this.jButtonSalvar;
     }
     
     public String getTextjTextFieldDateDay(){

@@ -216,7 +216,7 @@ public class MoradoresAdicionar extends CustomJPanel {
     private javax.swing.JTextField jTextFieldTelefone;
     // End of variables declaration//GEN-END:variables
 
-    public void addActionListenter(ActionListener listener){
+    public void addActionListener(ActionListener listener){
         this.jButtonSalvar.addActionListener(listener);
         this.jButtonCancelar.addActionListener(listener);
     }

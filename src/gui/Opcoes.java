@@ -31,21 +31,12 @@ public class Opcoes extends CustomJPanel {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        jButtonMoradores = new javax.swing.JButton();
         jButtonInfoCondominio = new javax.swing.JButton();
         jButtonSuporte = new javax.swing.JButton();
         jButtonContatos = new javax.swing.JButton();
         jButtonReturn = new javax.swing.JButton();
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        jButtonMoradores.setText("Moradores");
-        jButtonMoradores.setPreferredSize(new java.awt.Dimension(378, 159));
-        jButtonMoradores.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonMoradoresActionPerformed(evt);
-            }
-        });
 
         jButtonInfoCondominio.setText("Informações do Condomínio");
         jButtonInfoCondominio.setPreferredSize(new java.awt.Dimension(378, 159));
@@ -77,30 +68,28 @@ public class Opcoes extends CustomJPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(jButtonInfoCondominio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButtonInfoCondominio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
                         .addComponent(jButtonContatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButtonMoradores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
                         .addComponent(jButtonSuporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonInfoCondominio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonContatos, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonMoradores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonSuporte, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButtonInfoCondominio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButtonContatos, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonSuporte, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
         jButtonReturn.setText("Voltar");
@@ -138,11 +127,6 @@ public class Opcoes extends CustomJPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonMoradoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMoradoresActionPerformed
-        // TODO add your handling code here:
-        //aqui botão do orçamento
-    }//GEN-LAST:event_jButtonMoradoresActionPerformed
-
     private void jButtonInfoCondominioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInfoCondominioActionPerformed
         // TODO add your handling code here:
         //aqui botão de opções
@@ -165,7 +149,6 @@ public class Opcoes extends CustomJPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonContatos;
     private javax.swing.JButton jButtonInfoCondominio;
-    private javax.swing.JButton jButtonMoradores;
     private javax.swing.JButton jButtonReturn;
     private javax.swing.JButton jButtonSuporte;
     private javax.swing.JPanel jPanel2;
@@ -173,7 +156,6 @@ public class Opcoes extends CustomJPanel {
 
     public void addActionListener(ActionListener listener){
         this.jButtonInfoCondominio.addActionListener(listener);
-        this.jButtonMoradores.addActionListener(listener);
         this.jButtonSuporte.addActionListener(listener);
         this.jButtonContatos.addActionListener(listener);
         this.jButtonReturn.addActionListener(listener);
@@ -186,11 +168,7 @@ public class Opcoes extends CustomJPanel {
     public JButton getjButtonInfoCondominio() {
         return jButtonInfoCondominio;
     }
-
-    public JButton getjButtonMoradores() {
-        return jButtonMoradores;
-    }
-
+    
     public JButton getjButtonSuporte() {
         return jButtonSuporte;
     }

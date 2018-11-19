@@ -7,6 +7,8 @@ package controller;
 
 import gui.Condominio;
 import gui.Router;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  *
@@ -22,7 +24,17 @@ public class CondominioController {
         
         //adiciona gui ao gerenciador de navegacao
         Router.getInstance().addJPanel(condominioGUI);
-    }
     
+        condominioGUI.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                 if(evt.getSource() == condominioGUI.getjButtonSalvar()){
+                    //implementar o salvar dos dados, tem um exemplo no login
+                 }
+                 if(evt.getSource() == condominioGUI.getjButtonVoltar()){
+                    //volta para a tela anterior, copiar das outras telas
+                 }
+            }
+        });
+    }
     
 }

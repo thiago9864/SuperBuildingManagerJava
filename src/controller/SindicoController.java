@@ -7,6 +7,8 @@ package controller;
 
 import gui.Router;
 import gui.SindicoGUI;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  *
@@ -22,5 +24,19 @@ public class SindicoController {
         
         //adiciona gui ao gerenciador de navegacao
         Router.getInstance().addJPanel(sindicoGUI);
+        
+        sindicoGUI.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                 if(evt.getSource() == sindicoGUI.getjButtonSalvar()){
+                    //Salva as informações do jTextFields no banco de dados como informações dos sindicos
+                 }
+                 if(evt.getSource() == sindicoGUI.getjButtonVoltar()){
+                    //Voltar para a tela do Main Menu
+                 }
+            }
+        });
+        
+        //Implemente uma função para sempre que iniciar a tela pegar as informações relativas ao sindico
+        //Que estão no banco de dados e colocar nos jTextFields para a pessoa modificar caso necessario
     }
 }
