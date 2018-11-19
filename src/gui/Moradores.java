@@ -7,6 +7,7 @@ package gui;
 
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JList;
 import javax.swing.event.ListSelectionListener;
 
 /**
@@ -32,10 +33,10 @@ public class Moradores extends CustomJPanel {
     private void initComponents() {
 
         jDialog1 = new javax.swing.JDialog();
-        jButton1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        jButtonApagarNão = new javax.swing.JButton();
+        jLabelPerguntaApagar = new javax.swing.JLabel();
+        jButtonApagarSim = new javax.swing.JButton();
+        jLabelAlertaApagar = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jSplitPane1 = new javax.swing.JSplitPane();
@@ -73,23 +74,28 @@ public class Moradores extends CustomJPanel {
         jButtonEmitirSegundaVia = new javax.swing.JButton();
         jButtonReturn = new javax.swing.JButton();
 
-        jButton1.setText("Sim");
-
-        jLabel1.setText("Tem certeza que deseja apagar esse Morador?");
-
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 0, 0));
-        jButton2.setText("Não");
-        jButton2.setBorderPainted(false);
-        jButton2.setOpaque(false);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonApagarNão.setText("Não");
+        jButtonApagarNão.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButtonApagarNãoActionPerformed(evt);
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        jLabel2.setText("APÓS APAGADO NÃO HÁ COMO RECUPERAR");
+        jLabelPerguntaApagar.setText("Tem certeza que deseja apagar esse Morador?");
+
+        jButtonApagarSim.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        jButtonApagarSim.setForeground(new java.awt.Color(255, 0, 0));
+        jButtonApagarSim.setText("Sim");
+        jButtonApagarSim.setBorderPainted(false);
+        jButtonApagarSim.setOpaque(false);
+        jButtonApagarSim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonApagarSimActionPerformed(evt);
+            }
+        });
+
+        jLabelAlertaApagar.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        jLabelAlertaApagar.setText("APÓS APAGADO NÃO HÁ COMO RECUPERAR");
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
@@ -99,27 +105,27 @@ public class Moradores extends CustomJPanel {
                 .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jDialog1Layout.createSequentialGroup()
                         .addGap(89, 89, 89)
-                        .addComponent(jButton1)
+                        .addComponent(jButtonApagarNão)
                         .addGap(48, 48, 48)
-                        .addComponent(jButton2))
+                        .addComponent(jButtonApagarSim))
                     .addGroup(jDialog1Layout.createSequentialGroup()
                         .addGap(37, 37, 37)
                         .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))))
+                            .addComponent(jLabelPerguntaApagar)
+                            .addComponent(jLabelAlertaApagar))))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
         jDialog1Layout.setVerticalGroup(
             jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialog1Layout.createSequentialGroup()
                 .addGap(43, 43, 43)
-                .addComponent(jLabel1)
+                .addComponent(jLabelPerguntaApagar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
+                .addComponent(jLabelAlertaApagar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(jButtonApagarNão)
+                    .addComponent(jButtonApagarSim))
                 .addContainerGap())
         );
 
@@ -455,15 +461,19 @@ public class Moradores extends CustomJPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonAdicionarMoradorActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButtonApagarSimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonApagarSimActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jButtonApagarSimActionPerformed
+
+    private void jButtonApagarNãoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonApagarNãoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonApagarNãoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButtonAdicionarMorador;
+    private javax.swing.JButton jButtonApagarNão;
+    private javax.swing.JButton jButtonApagarSim;
     private javax.swing.JButton jButtonDarBaixa;
     private javax.swing.JButton jButtonEmitirBoleto;
     private javax.swing.JButton jButtonEmitirSegundaVia;
@@ -483,10 +493,10 @@ public class Moradores extends CustomJPanel {
     private javax.swing.JButton jButtonReturn;
     private javax.swing.JComboBox<String> jComboBoxSelectAno;
     private javax.swing.JDialog jDialog1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabelAlertaApagar;
     private javax.swing.JLabel jLabelAno;
     private javax.swing.JLabel jLabelMoradores;
+    private javax.swing.JLabel jLabelPerguntaApagar;
     private javax.swing.JList<String> jListMoradores;
     private javax.swing.JPanel jPainelListMoradores;
     private javax.swing.JPanel jPainelSeletorMeses;
@@ -526,6 +536,9 @@ public class Moradores extends CustomJPanel {
         
         this.jButtonAdicionarMorador.addActionListener(listener);
         this.jButtonRemoverMorador.addActionListener(listener);
+        
+        this.jButtonApagarSim.addActionListener(listener);
+        this.jButtonApagarNão.addActionListener(listener);
     }
     
     public void addListSelectionListener(ListSelectionListener listListener){
@@ -603,6 +616,18 @@ public class Moradores extends CustomJPanel {
     
     public void setTextInfoPagamentosMorador(String t){
         jTextInfoPagamento.setText(t);
+    }
+
+    public JButton getjButtonApagarNão() {
+        return jButtonApagarNão;
+    }
+
+    public JButton getjButtonApagarSim() {
+        return jButtonApagarSim;
+    }
+
+    public JList<String> getjListMoradores() {
+        return jListMoradores;
     }
      
     

@@ -5,6 +5,9 @@
  */
 package gui;
 
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+
 /**
  *
  * @author thiagoalmeida
@@ -46,12 +49,12 @@ public class Condominio extends CustomJPanel {
         jTextFieldBairro = new javax.swing.JTextField();
         jTextFieldCidade = new javax.swing.JTextField();
         jTextFieldEstado = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jButtonSalvar = new javax.swing.JButton();
+        jLabelInfoAdicional = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jLabel2 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        jTextAreaInfoAdicional = new javax.swing.JTextArea();
+        jLabelTitulo = new javax.swing.JLabel();
+        jButtonVoltar = new javax.swing.JButton();
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -73,22 +76,22 @@ public class Condominio extends CustomJPanel {
 
         jLabelEstado.setText("Estado");
 
-        jButton1.setText("Salvar");
+        jButtonSalvar.setText("Salvar");
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-        jLabel1.setText("Informações Adicionais");
+        jLabelInfoAdicional.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        jLabelInfoAdicional.setText("Informações Adicionais");
 
         jScrollPane1.setBorder(null);
 
-        jTextArea1.setBackground(new java.awt.Color(240, 240, 240));
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        jTextArea1.setRows(5);
-        jTextArea1.setText("Número de Condôminos: 123 \nReceita total em 2018: R$ 15456,26 \nDespesas totais em 2018: R$ 12543,65 \nSaldo atual (2018): R$ 1000,00");
-        jScrollPane1.setViewportView(jTextArea1);
+        jTextAreaInfoAdicional.setBackground(new java.awt.Color(240, 240, 240));
+        jTextAreaInfoAdicional.setColumns(20);
+        jTextAreaInfoAdicional.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jTextAreaInfoAdicional.setRows(5);
+        jTextAreaInfoAdicional.setText("Número de Condôminos: 123 \nReceita total em 2018: R$ 15456,26 \nDespesas totais em 2018: R$ 12543,65 \nSaldo atual (2018): R$ 1000,00");
+        jScrollPane1.setViewportView(jTextAreaInfoAdicional);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jLabel2.setText("Informações do Condominio");
+        jLabelTitulo.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabelTitulo.setText("Informações do Condominio");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -97,7 +100,7 @@ public class Condominio extends CustomJPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(43, 43, 43)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1)
+                    .addComponent(jButtonSalvar)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(jLabelEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -137,19 +140,19 @@ public class Condominio extends CustomJPanel {
                             .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
+                    .addComponent(jLabelInfoAdicional)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(47, 47, 47))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(86, 86, 86)
-                .addComponent(jLabel2)
+                .addComponent(jLabelTitulo)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(18, Short.MAX_VALUE)
-                .addComponent(jLabel2)
+                .addComponent(jLabelTitulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -185,7 +188,7 @@ public class Condominio extends CustomJPanel {
                             .addComponent(jLabelCidade)
                             .addComponent(jTextFieldCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(jLabelInfoAdicional)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -193,14 +196,14 @@ public class Condominio extends CustomJPanel {
                     .addComponent(jLabelEstado)
                     .addComponent(jTextFieldEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addComponent(jButtonSalvar)
                 .addGap(24, 24, 24))
         );
 
-        jButton2.setText("Voltar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonVoltar.setText("Voltar");
+        jButtonVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButtonVoltarActionPerformed(evt);
             }
         });
 
@@ -211,7 +214,7 @@ public class Condominio extends CustomJPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(133, 133, 133)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2)
+                    .addComponent(jButtonVoltar)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(111, Short.MAX_VALUE))
         );
@@ -219,35 +222,35 @@ public class Condominio extends CustomJPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(36, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(jButtonVoltar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(98, 98, 98))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jButtonVoltarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton jButtonSalvar;
+    private javax.swing.JButton jButtonVoltar;
     private javax.swing.JLabel jLabelBairro;
     private javax.swing.JLabel jLabelCNPJ;
     private javax.swing.JLabel jLabelCidade;
     private javax.swing.JLabel jLabelEmail;
     private javax.swing.JLabel jLabelEstado;
+    private javax.swing.JLabel jLabelInfoAdicional;
     private javax.swing.JLabel jLabelNome;
     private javax.swing.JLabel jLabelNumero;
     private javax.swing.JLabel jLabelRua;
     private javax.swing.JLabel jLabelTelefone;
+    private javax.swing.JLabel jLabelTitulo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextAreaInfoAdicional;
     private javax.swing.JTextField jTextFieldBairro;
     private javax.swing.JTextField jTextFieldCNPJ;
     private javax.swing.JTextField jTextFieldCidade;
@@ -258,4 +261,93 @@ public class Condominio extends CustomJPanel {
     private javax.swing.JTextField jTextFieldRua;
     private javax.swing.JTextField jTextFieldTelefone;
     // End of variables declaration//GEN-END:variables
+
+    public void addActionListener(ActionListener listener){
+        this.jButtonVoltar.addActionListener(listener);
+        this.jButtonSalvar.addActionListener(listener);
+    }
+
+    public JButton getjButtonSalvar() {
+        return jButtonSalvar;
+    }
+
+    public JButton getjButtonVoltar() {
+        return jButtonVoltar;
+    }
+    
+    public String getTextjTextFieldNome(){
+        return jTextFieldNome.getText();
+    }
+    
+    public String getTextjTextFieldBairro(){
+        return jTextFieldBairro.getText();
+    }
+    
+    public String getTextjTextFieldCNPJ(){
+        return jTextFieldCNPJ.getText();
+    }
+    
+    public String getTextjTextFieldCidade(){
+        return jTextFieldCidade.getText();
+    }
+    
+    public String getTextjTextFieldEmail(){
+        return jTextFieldEmail.getText();
+    }
+    
+    public String getTextjTextFieldEstado(){
+        return jTextFieldEstado.getText();
+    }
+    
+    public String getTextjTextFieldNumero(){
+        return jTextFieldNumero.getText();
+    }
+    
+    public String getTextjTextFieldRua(){
+        return jTextFieldRua.getText();
+    }
+    
+    public String getTextjTextFieldTelefone(){
+        return jTextFieldTelefone.getText();
+    }
+    
+    public void setTextjTextFieldNome(String rawText){
+        jTextFieldNome.setText(rawText);
+    }
+    
+    public void setTextjTextFieldBairro(String rawText){
+        jTextFieldBairro.setText(rawText);
+    }
+    
+    public void setTextjTextFieldCNPJ(String rawText){
+        jTextFieldCNPJ.setText(rawText);
+    }
+    
+    public void setTextjTextFieldCidade(String rawText){
+        jTextFieldCidade.setText(rawText);
+    }
+    
+    public void setTextjTextFieldEmail(String rawText){
+        jTextFieldEmail.setText(rawText);
+    }
+    
+    public void setTextjTextFieldEstado(String rawText){
+        jTextFieldEstado.setText(rawText);
+    }
+    
+    public void setTextjTextFieldNumero(String rawText){
+        jTextFieldNumero.setText(rawText);
+    }
+    
+    public void setTextjTextFieldRua(String rawText){
+        jTextFieldRua.setText(rawText);
+    }
+    
+    public void setTextjTextFieldTelefone(String rawText){
+        jTextFieldTelefone.setText(rawText);
+    }
+    
+    public void setTextjTextAreaInfoAdicional(String rawText){
+        jTextAreaInfoAdicional.setText(rawText);
+    }
 }

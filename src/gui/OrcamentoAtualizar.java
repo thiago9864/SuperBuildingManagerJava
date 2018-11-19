@@ -5,6 +5,10 @@
  */
 package gui;
 
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.event.ListSelectionListener;
+
 /**
  *
  * @author thiagoalmeida
@@ -27,36 +31,36 @@ public class OrcamentoAtualizar extends CustomJPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        jButtonVoltar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jSplitPane1 = new javax.swing.JSplitPane();
         jPanelReceitas = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
-        jLabel1 = new javax.swing.JLabel();
+        jListReceitas = new javax.swing.JList<>();
+        jLabelReceitas = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList<>();
-        jLabel2 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        jListGastos = new javax.swing.JList<>();
+        jLabelGastos = new javax.swing.JLabel();
+        jButtonRemover = new javax.swing.JButton();
         jPanelGastos = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        jLabelCadastroDe = new javax.swing.JLabel();
+        jComboBoxReceitaGasto = new javax.swing.JComboBox<>();
+        jLabelDescrição = new javax.swing.JLabel();
+        jTextFieldDescrição = new javax.swing.JTextField();
+        jTextFieldValor = new javax.swing.JTextField();
+        jLabelValor = new javax.swing.JLabel();
+        jTextFieldDateDay = new javax.swing.JTextField();
+        jLabelData = new javax.swing.JLabel();
+        jTextFieldDateMonth = new javax.swing.JTextField();
+        jTextFieldDateYear = new javax.swing.JTextField();
+        jLabelFSlash2 = new javax.swing.JLabel();
+        jLabelFSlash1 = new javax.swing.JLabel();
         jLabelMesAtualizado = new javax.swing.JLabel();
 
-        jButton1.setText("Voltar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonVoltar.setText("Voltar");
+        jButtonVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonVoltarActionPerformed(evt);
             }
         });
 
@@ -65,30 +69,30 @@ public class OrcamentoAtualizar extends CustomJPanel {
         jSplitPane1.setBorder(null);
         jSplitPane1.setDividerLocation(396);
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        jListReceitas.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(jListReceitas);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setText("Receitas");
+        jLabelReceitas.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelReceitas.setText("Receitas");
 
-        jList2.setModel(new javax.swing.AbstractListModel<String>() {
+        jListGastos.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane2.setViewportView(jList2);
+        jScrollPane2.setViewportView(jListGastos);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setText("Gastos");
+        jLabelGastos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelGastos.setText("Gastos");
 
-        jButton2.setText("Remover");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonRemover.setText("Remover");
+        jButtonRemover.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButtonRemoverActionPerformed(evt);
             }
         });
 
@@ -99,12 +103,12 @@ public class OrcamentoAtualizar extends CustomJPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelReceitasLayout.createSequentialGroup()
                 .addContainerGap(22, Short.MAX_VALUE)
                 .addGroup(jPanelReceitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
+                    .addComponent(jLabelReceitas)
+                    .addComponent(jLabelGastos)
                     .addGroup(jPanelReceitasLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addGroup(jPanelReceitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton2)
+                            .addComponent(jButtonRemover)
                             .addGroup(jPanelReceitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)))))
@@ -113,68 +117,68 @@ public class OrcamentoAtualizar extends CustomJPanel {
         jPanelReceitasLayout.setVerticalGroup(
             jPanelReceitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelReceitasLayout.createSequentialGroup()
-                .addComponent(jLabel1)
+                .addComponent(jLabelReceitas)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
+                .addComponent(jLabelGastos)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
+                .addComponent(jButtonRemover)
                 .addGap(0, 19, Short.MAX_VALUE))
         );
 
         jSplitPane1.setLeftComponent(jPanelReceitas);
 
-        jLabel4.setText("Cadastro de");
+        jLabelCadastroDe.setText("Cadastro de");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Receita", "Gasto" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        jComboBoxReceitaGasto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Receita", "Gasto" }));
+        jComboBoxReceitaGasto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                jComboBoxReceitaGastoActionPerformed(evt);
             }
         });
 
-        jLabel3.setText("Descrição");
+        jLabelDescrição.setText("Descrição");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldDescrição.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jTextFieldDescriçãoActionPerformed(evt);
             }
         });
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldValor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                jTextFieldValorActionPerformed(evt);
             }
         });
 
-        jLabel5.setText("Valor");
+        jLabelValor.setText("Valor");
 
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldDateDay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                jTextFieldDateDayActionPerformed(evt);
             }
         });
 
-        jLabel6.setText("Data");
+        jLabelData.setText("Data");
 
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldDateMonth.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                jTextFieldDateMonthActionPerformed(evt);
             }
         });
 
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldDateYear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                jTextFieldDateYearActionPerformed(evt);
             }
         });
 
-        jLabel7.setText("/");
+        jLabelFSlash2.setText("/");
 
-        jLabel8.setText("/");
+        jLabelFSlash1.setText("/");
 
         javax.swing.GroupLayout jPanelGastosLayout = new javax.swing.GroupLayout(jPanelGastos);
         jPanelGastos.setLayout(jPanelGastosLayout);
@@ -185,31 +189,31 @@ public class OrcamentoAtualizar extends CustomJPanel {
                 .addGroup(jPanelGastosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelGastosLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addComponent(jLabel3)
+                        .addComponent(jLabelDescrição)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jTextFieldDescrição, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelGastosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(jPanelGastosLayout.createSequentialGroup()
-                            .addComponent(jLabel5)
+                            .addComponent(jLabelValor)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextFieldValor, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanelGastosLayout.createSequentialGroup()
-                            .addComponent(jLabel4)
+                            .addComponent(jLabelCadastroDe)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBoxReceitaGasto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(188, 188, 188))
                         .addGroup(jPanelGastosLayout.createSequentialGroup()
-                            .addComponent(jLabel6)
+                            .addComponent(jLabelData)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldDateDay, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(4, 4, 4)
-                            .addComponent(jLabel8)
+                            .addComponent(jLabelFSlash1)
                             .addGap(3, 3, 3)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldDateMonth, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(3, 3, 3)
-                            .addComponent(jLabel7)
+                            .addComponent(jLabelFSlash2)
                             .addGap(4, 4, 4)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldDateYear, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(76, 76, 76))))
                 .addContainerGap(57, Short.MAX_VALUE))
         );
@@ -218,24 +222,24 @@ public class OrcamentoAtualizar extends CustomJPanel {
             .addGroup(jPanelGastosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelGastosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelCadastroDe)
+                    .addComponent(jComboBoxReceitaGasto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelGastosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelDescrição)
+                    .addComponent(jTextFieldDescrição, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelGastosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelValor)
+                    .addComponent(jTextFieldValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelGastosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel7))
+                    .addComponent(jLabelData)
+                    .addComponent(jTextFieldDateDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldDateMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldDateYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelFSlash1)
+                    .addComponent(jLabelFSlash2))
                 .addContainerGap(322, Short.MAX_VALUE))
         );
 
@@ -271,78 +275,120 @@ public class OrcamentoAtualizar extends CustomJPanel {
                 .addGap(85, 85, 85)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(jButtonVoltar))
                 .addContainerGap(140, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(jButtonVoltar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(15, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonVoltarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButtonRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoverActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jButtonRemoverActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void jComboBoxReceitaGastoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxReceitaGastoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_jComboBoxReceitaGastoActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jTextFieldDescriçãoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDescriçãoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_jTextFieldDescriçãoActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void jTextFieldValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldValorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_jTextFieldValorActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void jTextFieldDateDayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDateDayActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_jTextFieldDateDayActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void jTextFieldDateMonthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDateMonthActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_jTextFieldDateMonthActionPerformed
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+    private void jTextFieldDateYearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDateYearActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    }//GEN-LAST:event_jTextFieldDateYearActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
+    private javax.swing.JButton jButtonRemover;
+    private javax.swing.JButton jButtonVoltar;
+    private javax.swing.JComboBox<String> jComboBoxReceitaGasto;
+    private javax.swing.JLabel jLabelCadastroDe;
+    private javax.swing.JLabel jLabelData;
+    private javax.swing.JLabel jLabelDescrição;
+    private javax.swing.JLabel jLabelFSlash1;
+    private javax.swing.JLabel jLabelFSlash2;
+    private javax.swing.JLabel jLabelGastos;
     private javax.swing.JLabel jLabelMesAtualizado;
-    private javax.swing.JList<String> jList1;
-    private javax.swing.JList<String> jList2;
+    private javax.swing.JLabel jLabelReceitas;
+    private javax.swing.JLabel jLabelValor;
+    private javax.swing.JList<String> jListGastos;
+    private javax.swing.JList<String> jListReceitas;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelGastos;
     private javax.swing.JPanel jPanelReceitas;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextFieldDateDay;
+    private javax.swing.JTextField jTextFieldDateMonth;
+    private javax.swing.JTextField jTextFieldDateYear;
+    private javax.swing.JTextField jTextFieldDescrição;
+    private javax.swing.JTextField jTextFieldValor;
     // End of variables declaration//GEN-END:variables
+
+    public void addListSelectionListener(ListSelectionListener listener){
+        this.jListGastos.addListSelectionListener(listener);
+        this.jListReceitas.addListSelectionListener(listener);
+    }
+    
+    public void addActionListener(ActionListener listener){
+        this.jButtonRemover.addActionListener(listener);
+        this.jButtonVoltar.addActionListener(listener);
+    }
+    
+    public int getSelectedComboBox(){
+        return this.jComboBoxReceitaGasto.getSelectedIndex();
+    }
+
+    public JButton getjButtonRemover() {
+        return this.jButtonRemover;
+    }
+
+    public JButton getjButtonVoltar() {
+        return this.jButtonVoltar;
+    }
+    
+    public String getTextjTextFieldDateDay(){
+        return this.jTextFieldDateDay.getText();
+    }
+    
+    public String getTextjTextFieldDateMonth(){
+        return this.jTextFieldDateMonth.getText();
+    }
+    
+    public String getTextjTextFieldDateYear(){
+        return this.jTextFieldDateYear.getText();
+    }
+    
+    public String getTextjTextFieldValor(){
+        return this.jTextFieldValor.getText();
+    }
+    
+    public String getTextjTextFieldDescrição(){
+        return this.jTextFieldDescrição.getText();
+    }
 }

@@ -383,4 +383,36 @@ public class Orcamento extends CustomJPanel {
     public void setReceitaPreview(String rawText){
         this.jTextAreaReceita.setText(rawText);
     }
+    
+    public void setBalançoPreview(String rawText){
+        this.jLabelBalançoValue.setText(rawText);
+    }
+    
+    public void setSaldoFinalPreview(String rawText){
+        this.jLabelSaldoFinalValue.setText(rawText);
+    }
+    
+    public String getSelectedMonthInPopUp(){
+        return this.jComboBoxMes.getSelectedItem().toString();
+    }
+    
+    public String getSelectedYearInPopUp(){
+        return this.jComboBoxAno.getSelectedItem().toString();
+    }
+    
+    public void setMonthsInPopUp(String[] meses){
+        this.jComboBoxMes.removeAllItems();
+        for(int i = 0;i<meses.length;i++){
+            this.jComboBoxMes.addItem(meses[i]);
+        }
+        
+    }
+    
+    public void setYearsInPopUp(String[] anos){
+        this.jComboBoxAno.removeAllItems();
+        for(int i = 0;i<anos.length;i++){
+            this.jComboBoxAno.addItem(anos[i]);
+        }
+        
+    }
 }
