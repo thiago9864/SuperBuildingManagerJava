@@ -5,59 +5,63 @@
  */
 package persistencia;
 
-import dominio.Condominio;
+import dominio.TipoFinanca;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+
 /**
  *
  * @author thiagoalmeida
  */
-public class CondominioDAO {
+public class TipoFinancaDAO {
     
     FactoryConnection factoryConn = new FactoryConnection();
 
-    public CondominioDAO() {
+    public TipoFinancaDAO() {
     }
-    
-    
-    
     
     /******** CRUD *********/
     
     
+    private TipoFinanca buildTipoFinancaObject(ResultSet rs) throws SQLException {
+            
+        return new TipoFinanca(
+            rs.getInt("id"),
+            rs.getString("nome"), 
+            rs.getString("descricao"),
+            rs.getBoolean("is_renda")
+        );            
+            
+    }
     
     
     /**
-     * Metodo que cria uma entrada de condominio na tabela condominio
-     * @param condominio (objeto do tipo Condominio)
+     * Metodo que cria uma entrada de tipo financa na tabela tipo_financa
+     * @param tipoFinanca (objeto do tipo TipoFinanca)
      * @return (int idInserido ou -1 se der falha)
      */
-    public Integer create(Condominio condominio){
+    public Integer create(TipoFinanca tipoFinanca){
         
         Connection conn = factoryConn.getConnection();
         int rowsAffected = 0;
         
-        String sql = "INSERT INTO condominio (nome, cnpj, telefone, endereco, numero, cidade, estado, cep, valor_aluguel) ";
-        sql += "VALUES ($1$, $2$, $3$, $4$, $5$, $6$, $7$, $8$, $9$)";
+        String sql = "INSERT INTO tipo_financa (nome, descricao, is_renda) ";
+        sql += "VALUES ($1$, $2$, $3$)";
         
         CustomPrepareStatement prepare = new CustomPrepareStatement(sql);
 
         try {
             
-            prepare.setString(1, condominio.getNome());
-            prepare.setString(2, condominio.getCnpj());
-            prepare.setString(3, condominio.getTelefone());
-            prepare.setString(4, condominio.getEndereco());
-            prepare.setString(5, condominio.getNumero());
-            prepare.setString(6, condominio.getCidade());
-            prepare.setString(7, condominio.getEstado());
-            prepare.setInt(8, condominio.getCep());
-            prepare.setFloat(9, condominio.getValor_aluguel());
+            prepare.setString(1, tipoFinanca.getNome());
+            prepare.setString(2, tipoFinanca.getDescricao());
+            prepare.setBoolean(3, tipoFinanca.isRenda());
              
             rowsAffected = prepare.executeUpdate(conn);
             System.out.println("rowsAffected: " + rowsAffected);
-  
+             
+                
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -66,26 +70,27 @@ public class CondominioDAO {
         factoryConn.closeConnection();
             
         if(rowsAffected > 0){
-            //retorna o id do condominio criado
-            return factoryConn.maxIDFromTable("condominio");
+            //retorna o id do tipo financa criado
+            return factoryConn.maxIDFromTable("tipo_financa");
         } else {
             return -1;
         }
     }
     
+            
 
     /**
-     * Metodo que obtem os dados do condominio indicado pelo parametro idCondominio
+     * Metodo que obtem os dados do morador
      * @param id (int)
-     * @return (objeto Condominio)
+     * @return (TipoFinanca)
      */
-    public Condominio read(Integer id){
+    public TipoFinanca read(Integer id){
         
         Connection conn = factoryConn.getConnection();
-        Condominio condominioObj = null;
+        TipoFinanca objTipoFinanca = null;
         
-        String sql = "SELECT * FROM condominio WHERE id=$1$";
-        
+        String sql = "SELECT id, nome, descricao, is_renda FROM tipo_financa WHERE id=$1$";
+
         CustomPrepareStatement prepare = new CustomPrepareStatement(sql);
         
         try {
@@ -94,20 +99,10 @@ public class CondominioDAO {
 
             ResultSet rs = prepare.executeQuery(conn);
             
-            
-            condominioObj = new Condominio(
-                    rs.getInt("id"),
-                    rs.getString("cnpj"),
-                    rs.getString("nome"),                    
-                    rs.getString("telefone"),
-                    rs.getString("endereco"),
-                    rs.getString("numero"),
-                    rs.getString("cidade"),
-                    rs.getString("estado"),
-                    rs.getInt("cep"),
-                    rs.getFloat("valor_aluguel")
-            );
-   
+            objTipoFinanca = buildTipoFinancaObject(rs);
+
+
+                
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         } 
@@ -115,42 +110,71 @@ public class CondominioDAO {
         // close connection
         factoryConn.closeConnection();
         
-        return condominioObj;
+        return objTipoFinanca;
     }
     
-    
     /**
-     * Metodo que atualiza os dados de um condominio dado o objeto recebido
-     * @param condominio (objeto Condominio)
-     * @return (true se sucesso, false se erro)
+     * Metodo que lista os tipos financa
+     * @return (ArrayList TipoFinanca)
      */
-    public boolean update(Condominio condominio){
+    public ArrayList<TipoFinanca> list(){
         
         Connection conn = factoryConn.getConnection();
-        int rowsAffected = 0;
+        ArrayList<TipoFinanca> tipoFinancaArr = new ArrayList<>();
         
-        String sql = "";
-        sql += "UPDATE condominio ";
-        sql += "SET nome=$1$, cnpj=$2$, telefone=$3$, endereco=$4$, numero=$5$, cidade=$6$, estado=$7$, cep=$8$, valor_aluguel=$9$ ";
-        sql += "WHERE id=$10$";
+        String sql = "SELECT id, nome, descricao, is_renda FROM tipo_financa";
         
         CustomPrepareStatement prepare = new CustomPrepareStatement(sql);
         
         try {
             
-            prepare.setInt(10, condominio.getId());
-            prepare.setString(1, condominio.getNome());
-            prepare.setString(2, condominio.getCnpj());
-            prepare.setString(3, condominio.getTelefone());
-            prepare.setString(4, condominio.getEndereco());
-            prepare.setString(5, condominio.getNumero());
-            prepare.setString(6, condominio.getCidade());
-            prepare.setString(7, condominio.getEstado());
-            prepare.setInt(8, condominio.getCep());
-            prepare.setFloat(9, condominio.getValor_aluguel());            
+            ResultSet rs = prepare.executeQuery(conn);
+            
+            // loop through the result set
+            while (rs.next()) {
+                tipoFinancaArr.add(buildTipoFinancaObject(rs));
+            }
+
+                
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } 
+        
+        // close connection
+        factoryConn.closeConnection();
+        
+        return tipoFinancaArr;
+    }
+    
+    
+    /**
+     * Metodo que atualiza os dados de um tipo financa dado o objeto recebido
+     * @param tipoFinanca (objeto TipoFinanca)
+     * @return (true se sucesso, false se erro)
+     */
+    public boolean update(TipoFinanca tipoFinanca){
+        
+        Connection conn = factoryConn.getConnection();
+        int rowsAffected = 0;
+
+        String sql = "";
+        sql += "UPDATE tipo_financa ";
+        sql += "SET nome=$1$, descricao=$2$, is_renda=$3$ ";
+        sql += "WHERE id=$4$";
+        
+        CustomPrepareStatement prepare = new CustomPrepareStatement(sql);
+        
+        try {
+            
+            prepare.setString(1, tipoFinanca.getNome());
+            prepare.setString(2, tipoFinanca.getDescricao());
+            prepare.setBoolean(3, tipoFinanca.isRenda());
+            prepare.setInt(4, tipoFinanca.getId());
+
              
             rowsAffected = prepare.executeUpdate(conn);
             System.out.println("rowsAffected: " + rowsAffected);
+           
             
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -164,10 +188,10 @@ public class CondominioDAO {
         }
         return false;
     }
-
+    
     
     /**
-     * Metodo que deleta um condominio dado id fornecido
+     * Metodo que deleta um morador dado id fornecido
      * @param id (int)
      * @return (true se excluiu, false se não excluiu)
      */
@@ -176,7 +200,7 @@ public class CondominioDAO {
         Connection conn = factoryConn.getConnection();
         int rowsAffected = 0;
         
-        String sql = "DELETE FROM condominio WHERE id=$1$";
+        String sql = "DELETE FROM tipo_financa WHERE id=$1$";
         
         CustomPrepareStatement prepare = new CustomPrepareStatement(sql);
         
@@ -186,7 +210,7 @@ public class CondominioDAO {
              
             rowsAffected = prepare.executeUpdate(conn);
             System.out.println("rowsAffected: " + rowsAffected);
-                
+            
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }

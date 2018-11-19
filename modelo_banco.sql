@@ -124,7 +124,6 @@ CREATE TABLE IF NOT EXISTS "item_financa"(
 );
 CREATE INDEX IF NOT EXISTS "item_financa.fk_item_financa_tipo_financa1_idx" ON "item_financa" ("tipo_financa_id");
 CREATE INDEX IF NOT EXISTS "item_financa.fk_item_financa_orcamento1_idx" ON "item_financa" ("orcamento_id");
-CREATE INDEX IF NOT EXISTS "item_financa.fk_item_financa_boleto1_idx" ON "item_financa" ("boleto_id","boleto_status_boleto_id","boleto_morador_id","boleto_morador_condominio_id");
 
 INSERT INTO "condominio" ("id", "nome", "valor_aluguel") VALUES (0, "Condominio", 100);
 INSERT INTO "sindico" ("id", "nome", "usuario", "senha", "condominio_id") VALUES (0, "Usuario", "admin", "admin", 0);

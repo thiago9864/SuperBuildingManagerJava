@@ -95,14 +95,13 @@ public class BoletoDAO {
     
     
     /**
-     * Metodo que cria uma entrada de condominio na tabela condominio
-     * @param boleto (objeto do tipo Condominio)
+     * Metodo que cria uma entrada de boleto na tabela boleto
+     * @param boleto (objeto do tipo Boleto)
      * @return (int idInserido ou -1 se der falha)
      */
     public Integer create(Boleto boleto){
         
         Connection conn = factoryConn.getConnection();
-        Boleto boletoObj = null;
         int rowsAffected = 0;
         
         String sql = "INSERT INTO boleto (id, morador_id, morador_condominio_id, status_boleto_id, banco, codigo, valor, juros, desconto, multa, data_vencimento, is_segunda_via) ";
@@ -127,16 +126,17 @@ public class BoletoDAO {
              
             rowsAffected = prepare.executeUpdate(conn);
             System.out.println("rowsAffected: " + rowsAffected);
-             
-            // close connection
-            factoryConn.closeConnection();
-                
+      
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        
+        // close connection
+        factoryConn.closeConnection();
+            
         if(rowsAffected > 0){
             //retorna o id do condominio criado
-            return factoryConn.maxIDFromTable("condominio");
+            return factoryConn.maxIDFromTable("boleto");
         } else {
             return -1;
         }
@@ -144,9 +144,9 @@ public class BoletoDAO {
     
 
     /**
-     * Metodo que obtem os dados do condominio indicado pelo parametro idCondominio
+     * Metodo que obtem os dados do boleto
      * @param id (int)
-     * @return (objeto Condominio)
+     * @return (objeto Boleto)
      */
     public Boleto read(Integer id){
         
@@ -169,19 +169,23 @@ public class BoletoDAO {
             ResultSet rs = prepare.executeQuery(conn);
             
             boletoObj = buildBoletoObject(rs);
-
-            // close connection
-            factoryConn.closeConnection();
-                
+  
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         } 
+        
+        // close connection
+        factoryConn.closeConnection();
         
         return boletoObj;
     }
     
     
-    
+    /**
+     * Metodo que lista os boletos por morador
+     * @param idMorador
+     * @return ArrayList<Boleto>
+     */
     public ArrayList<Boleto> list(Integer idMorador){
         
         Connection conn = factoryConn.getConnection();
@@ -207,13 +211,13 @@ public class BoletoDAO {
             while (rs.next()) {
                 orcamentoArr.add(buildBoletoObject(rs));
             }
-
-            // close connection
-            factoryConn.closeConnection();
                 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         } 
+        
+        // close connection
+        factoryConn.closeConnection();
         
         return orcamentoArr;
     }
@@ -255,12 +259,13 @@ public class BoletoDAO {
             rowsAffected = prepare.executeUpdate(conn);
             System.out.println("rowsAffected: " + rowsAffected);
             
-            // close connection
-            factoryConn.closeConnection();
-            
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        
+        // close connection
+        factoryConn.closeConnection();
+            
         if(rowsAffected > 0){
             return true;
         }
@@ -270,7 +275,7 @@ public class BoletoDAO {
     
     
     /**
-     * Metodo que deleta um condominio dado id fornecido
+     * Metodo que deleta um boleto dado id fornecido
      * @param id (int)
      * @return (true se excluiu, false se não excluiu)
      */
@@ -289,13 +294,14 @@ public class BoletoDAO {
              
             rowsAffected = prepare.executeUpdate(conn);
             System.out.println("rowsAffected: " + rowsAffected);
-            
-            // close connection
-            factoryConn.closeConnection();
                 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        
+        // close connection
+        factoryConn.closeConnection();
+            
         if(rowsAffected > 0){
             return true;
         }
