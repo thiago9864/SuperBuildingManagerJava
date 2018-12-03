@@ -7,6 +7,12 @@ package gui;
 
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
 /**
  *
@@ -376,6 +382,10 @@ public class Orcamento extends CustomJPanel {
         return jButtonVoltar;
     }
     
+    public void setMesAno(String mes, String ano){
+        jLabelDataPreview.setText("Orçamento " + mes + " " + ano);
+    }
+    
     public void setGastosPreview(String rawText){
         this.jTextAreaGastos.setText(rawText);
     }
@@ -404,8 +414,7 @@ public class Orcamento extends CustomJPanel {
         this.jComboBoxMes.removeAllItems();
         for(int i = 0;i<meses.length;i++){
             this.jComboBoxMes.addItem(meses[i]);
-        }
-        
+        }        
     }
     
     public void setYearsInPopUp(String[] anos){
@@ -413,6 +422,92 @@ public class Orcamento extends CustomJPanel {
         for(int i = 0;i<anos.length;i++){
             this.jComboBoxAno.addItem(anos[i]);
         }
-        
     }
+    
+    public void mostrarDialog(){
+        jDialogPopUpEscolhaMes.setSize(400, 200);
+        jDialogPopUpEscolhaMes.setVisible(true);
+    }
+    
+    public void esconderDialog(){
+        jDialogPopUpEscolhaMes.setVisible(false);
+    }
+
+    public JComboBox<String> getjComboBoxAno() {
+        return jComboBoxAno;
+    }
+
+    public JComboBox<String> getjComboBoxMes() {
+        return jComboBoxMes;
+    }
+
+    public JDialog getjDialogPopUpEscolhaMes() {
+        return jDialogPopUpEscolhaMes;
+    }
+
+    public JLabel getjLabelBalanço() {
+        return jLabelBalanço;
+    }
+
+    public JLabel getjLabelBalançoValue() {
+        return jLabelBalançoValue;
+    }
+
+    public JLabel getjLabelDataPreview() {
+        return jLabelDataPreview;
+    }
+
+    public JLabel getjLabelForwardSlash() {
+        return jLabelForwardSlash;
+    }
+
+    public JLabel getjLabelGastosPreview() {
+        return jLabelGastosPreview;
+    }
+
+    public JLabel getjLabelLineSplit() {
+        return jLabelLineSplit;
+    }
+
+    public JLabel getjLabelReceitaPreview() {
+        return jLabelReceitaPreview;
+    }
+
+    public JLabel getjLabelSaldoFinal() {
+        return jLabelSaldoFinal;
+    }
+
+    public JLabel getjLabelSaldoFinalValue() {
+        return jLabelSaldoFinalValue;
+    }
+
+    public JLabel getjLabelTitle() {
+        return jLabelTitle;
+    }
+
+    public JPanel getjPanel1() {
+        return jPanel1;
+    }
+
+    public JPanel getjPanel2() {
+        return jPanel2;
+    }
+
+    public JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    public JScrollPane getjScrollPane2() {
+        return jScrollPane2;
+    }
+
+    public JTextArea getjTextAreaGastos() {
+        return jTextAreaGastos;
+    }
+
+    public JTextArea getjTextAreaReceita() {
+        return jTextAreaReceita;
+    }
+    
+    
 }

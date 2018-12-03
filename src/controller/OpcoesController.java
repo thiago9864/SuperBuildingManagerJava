@@ -32,12 +32,15 @@ public class OpcoesController {
                  }
                  if(evt.getSource() == opcoesGUI.getjButtonInfoCondominio()){
                     //abre a tela condominio
+                    Router.getInstance().abrir("Condominio");
                  }
                  if(evt.getSource() == opcoesGUI.getjButtonReturn()){
                     //volta pra tela anterior é só copiar o codigo de outra tela
+                    Router.getInstance().voltar();
                  }
                  if(evt.getSource() == opcoesGUI.getjButtonSuporte()){
                     //abre um popup com email de suporte para o programa
+                    opcoesGUI.criarMensagemInformacao("Suporte", "Entre em contato com o email: naoexiste@bol.com");
                  }
             }
         });

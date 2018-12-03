@@ -6,7 +6,16 @@
 package gui;
 
 import java.awt.event.ActionListener;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JSplitPane;
+import javax.swing.JTextField;
 import javax.swing.event.ListSelectionListener;
 
 /**
@@ -18,8 +27,15 @@ public class OrcamentoAtualizar extends CustomJPanel {
     /**
      * Creates new form OrcamentoAtualizar
      */
+    private DefaultListModel modelGastos, modelReceitas;
     public OrcamentoAtualizar() {
         initComponents();
+        
+        modelGastos = new DefaultListModel();
+        modelReceitas = new DefaultListModel();
+        
+        jListGastos.setModel(modelGastos);
+        jListReceitas.setModel(modelReceitas);
     }
 
     /**
@@ -410,7 +426,118 @@ public class OrcamentoAtualizar extends CustomJPanel {
         return this.jTextFieldValor.getText();
     }
     
-    public String getTextjTextFieldDescrição(){
+    public String getTextjTextFieldDescricao(){
         return this.jTextFieldDescrição.getText();
+    }
+
+    public JComboBox<String> getjComboBoxReceitaGasto() {
+        return jComboBoxReceitaGasto;
+    }
+
+    public JLabel getjLabelCadastroDe() {
+        return jLabelCadastroDe;
+    }
+
+    public JLabel getjLabelData() {
+        return jLabelData;
+    }
+
+    public JLabel getjLabelDescrição() {
+        return jLabelDescrição;
+    }
+
+    public JLabel getjLabelFSlash1() {
+        return jLabelFSlash1;
+    }
+
+    public JLabel getjLabelFSlash2() {
+        return jLabelFSlash2;
+    }
+
+    public JLabel getjLabelGastos() {
+        return jLabelGastos;
+    }
+
+    public JLabel getjLabelMesAtualizado() {
+        return jLabelMesAtualizado;
+    }
+
+    public JLabel getjLabelReceitas() {
+        return jLabelReceitas;
+    }
+
+    public JLabel getjLabelValor() {
+        return jLabelValor;
+    }
+
+    public JList<String> getjListGastos() {
+        return jListGastos;
+    }
+
+    public JList<String> getjListReceitas() {
+        return jListReceitas;
+    }
+
+    public JPanel getjPanel1() {
+        return jPanel1;
+    }
+
+    public JPanel getjPanelGastos() {
+        return jPanelGastos;
+    }
+
+    public JPanel getjPanelReceitas() {
+        return jPanelReceitas;
+    }
+
+    public JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    public JScrollPane getjScrollPane2() {
+        return jScrollPane2;
+    }
+
+    public JSplitPane getjSplitPane1() {
+        return jSplitPane1;
+    }
+
+    public JTextField getjTextFieldDateDay() {
+        return jTextFieldDateDay;
+    }
+
+    public JTextField getjTextFieldDateMonth() {
+        return jTextFieldDateMonth;
+    }
+
+    public JTextField getjTextFieldDateYear() {
+        return jTextFieldDateYear;
+    }
+
+    public JTextField getjTextFieldDescrição() {
+        return jTextFieldDescrição;
+    }
+
+    public JTextField getjTextFieldValor() {
+        return jTextFieldValor;
+    }
+    
+    public void addGasto(int id, float valor){
+        modelGastos.addElement(id + " " + valor);
+    }
+    
+    public void addReceita(int id, float valor){
+        modelReceitas.addElement(id + " " + valor);
+    }
+    
+    public void criarMensagemErro(String titulo, String mensagem){
+
+        //https://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html
+        JOptionPane.showMessageDialog(
+                this,
+                mensagem,
+                titulo,
+                JOptionPane.ERROR_MESSAGE
+            );
     }
 }

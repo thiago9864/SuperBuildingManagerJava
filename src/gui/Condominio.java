@@ -7,6 +7,7 @@ package gui;
 
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -349,5 +350,27 @@ public class Condominio extends CustomJPanel {
     
     public void setTextjTextAreaInfoAdicional(String rawText){
         jTextAreaInfoAdicional.setText(rawText);
+    }
+    
+    public void criarMensagemErro(String titulo, String mensagem){
+
+        //https://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html
+        JOptionPane.showMessageDialog(
+                this,
+                mensagem,
+                titulo,
+                JOptionPane.ERROR_MESSAGE
+            );
+    }
+    
+    public void criarMensagemInformacao(String titulo, String mensagem){
+
+        //https://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html
+        JOptionPane.showMessageDialog(
+                this,
+                mensagem,
+                titulo,
+                JOptionPane.INFORMATION_MESSAGE
+            );
     }
 }

@@ -32,6 +32,10 @@ public class Orcamento {
         this.renda = renda;
         this.saldo = saldo;
     }
+    
+    public Orcamento(){
+        
+    }
 
     
     public Integer getId() {

@@ -32,6 +32,7 @@ public class SindicoController {
                  }
                  if(evt.getSource() == sindicoGUI.getjButtonVoltar()){
                     //Voltar para a tela do Main Menu
+                    Router.getInstance().voltar();
                  }
             }
         });

@@ -264,5 +264,38 @@ public class MoradorDAO {
         
     }
     
+    /**
+     * Metodo que lista todos os moradores
+     * @param void
+     * @return (ArrayList Morador)
+     */
+    public ArrayList<Morador> listMoradores(){
+        
+        Connection conn = factoryConn.getConnection();
+        ArrayList<Morador> moradorArr = new ArrayList<>();
+        
+        String sql = "SELECT m.id, m.nome, m.telefone, m.email, m.cpf, m.bloco, m.andar, m.apartamento, ";
+        sql += "c.id as condominio_id, c.cnpj, c.nome as nome_c, c.telefone as telefone_c, c.endereco, c.numero, c.cidade, c.estado, c.cep, c.valor_aluguel ";
+        sql += "FROM morador m, condominio c WHERE c.id=m.condominio_id";
+        
+        CustomPrepareStatement prepare = new CustomPrepareStatement(sql);
+        
+        try {
+            ResultSet rs = prepare.executeQuery(conn);
+            
+            // loop through the result set
+            while (rs.next()) {
+                moradorArr.add(buildMoradorObject(rs));
+            }
+   
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } 
+        
+        // close connection
+        factoryConn.closeConnection();
+            
+        return moradorArr;
+    }
     
 }

@@ -6,8 +6,11 @@
 package gui;
 
 import java.awt.event.ActionListener;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionListener;
 
 /**
@@ -19,8 +22,14 @@ public class Moradores extends CustomJPanel {
     /**
      * Creates new form Moradores
      */
+    DefaultListModel model;
+    DefaultComboBoxModel<String> modelCB;
     public Moradores() {
         initComponents();
+        model = new DefaultListModel();
+        jListMoradores.setModel(model);
+        modelCB = new DefaultComboBoxModel<String>();
+        jComboBoxSelectAno.setModel(modelCB);
     }
 
     /**
@@ -145,17 +154,17 @@ public class Moradores extends CustomJPanel {
         jSplitPane2.setDividerLocation(394);
         jSplitPane2.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
-        jListMoradores.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jListMoradores.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPanelListaMoradores.setViewportView(jListMoradores);
 
         jSplitPane2.setLeftComponent(jScrollPanelListaMoradores);
 
         jButtonRemoverMorador.setText("Remover");
+        jButtonRemoverMorador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRemoverMoradorActionPerformed(evt);
+            }
+        });
 
         jButtonAdicionarMorador.setText("Adicionar");
         jButtonAdicionarMorador.addActionListener(new java.awt.event.ActionListener() {
@@ -469,6 +478,10 @@ public class Moradores extends CustomJPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonApagarNãoActionPerformed
 
+    private void jButtonRemoverMoradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoverMoradorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonRemoverMoradorActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAdicionarMorador;
@@ -609,6 +622,9 @@ public class Moradores extends CustomJPanel {
         return jButtonReturn;
     }
     
+    public JButton getjButtonAdicionar(){
+        return jButtonAdicionarMorador;
+    }
     
     public void setTextInfoGeralMorador(String t){
         jTextInfoMorador.setText(t);
@@ -625,10 +641,39 @@ public class Moradores extends CustomJPanel {
     public JButton getjButtonApagarSim() {
         return jButtonApagarSim;
     }
+    
+    public JButton getjButtonRemover(){
+        return jButtonRemoverMorador;
+    }
 
     public JList<String> getjListMoradores() {
         return jListMoradores;
     }
-     
     
+    public void addAno(int ano){
+        modelCB.addElement(Integer.toString(ano));
+    }
+    
+    public int getSelectedYear(){
+        return Integer.parseInt((String)jComboBoxSelectAno.getSelectedItem());
+    }
+    
+    public void addMorador(String nome){
+        model.addElement(nome);
+    }
+    
+    public void removerMorador(String nome){
+        model.removeElement(nome);
+    }
+    
+    public void criarMensagemErro(String titulo, String mensagem){
+
+        //https://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html
+        JOptionPane.showMessageDialog(
+                this,
+                mensagem,
+                titulo,
+                JOptionPane.ERROR_MESSAGE
+            );
+    }
 }

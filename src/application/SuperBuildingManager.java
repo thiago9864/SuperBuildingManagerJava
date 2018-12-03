@@ -26,6 +26,7 @@ public class SuperBuildingManager {
     public static void main(String[] args) {
        
         /****** cria janela principal onde vão ser abertas as gui *******/
+        //USuario e senha padrões : admin
         
         JFrame jFrame = new JFrame("Super Building Manager");
         

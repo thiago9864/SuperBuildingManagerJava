@@ -7,6 +7,7 @@ package gui;
 
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -177,5 +178,14 @@ public class Opcoes extends CustomJPanel {
         return jButtonReturn;
     }
 
-    
+    public void criarMensagemInformacao(String titulo, String mensagem){
+
+        //https://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html
+        JOptionPane.showMessageDialog(
+                this,
+                mensagem,
+                titulo,
+                JOptionPane.INFORMATION_MESSAGE
+            );
+    }
 }

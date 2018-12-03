@@ -7,6 +7,7 @@ package gui;
 
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -255,5 +256,16 @@ public class MoradoresAdicionar extends CustomJPanel {
     
     public String getTextjTextFieldTelefone(){
         return this.jTextFieldTelefone.getText();
+    }
+    
+    public void criarMensagemErro(String titulo, String mensagem){
+
+        //https://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html
+        JOptionPane.showMessageDialog(
+                this,
+                mensagem,
+                titulo,
+                JOptionPane.ERROR_MESSAGE
+            );
     }
 }

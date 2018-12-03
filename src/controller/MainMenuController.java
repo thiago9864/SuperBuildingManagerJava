@@ -27,13 +27,13 @@ public class MainMenuController {
         mainMenuGUI.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                  if(evt.getSource() == mainMenuGUI.getBtnOpcoes()){
-                    //abre a tela de opções
+                    Router.getInstance().abrir("Opcoes");
                  }
                  if(evt.getSource() == mainMenuGUI.getBtnOrcamento()){
-                     // abre a tela de orçamento
+                     Router.getInstance().abrir("Orcamento");
                  }
                  if(evt.getSource() == mainMenuGUI.getBtnMoradores()){
-                     // abre a tela de moradores
+                     Router.getInstance().abrir("Moradores");
                  }
             }
         });

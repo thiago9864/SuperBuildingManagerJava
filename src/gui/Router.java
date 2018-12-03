@@ -123,5 +123,4 @@ public class Router {
         //abre a tela pra voltar
         abrir(telaAbrir.getTAG());
     }
-   
 }
