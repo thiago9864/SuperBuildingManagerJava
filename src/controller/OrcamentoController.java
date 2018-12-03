@@ -5,11 +5,11 @@
  */
 package controller;
 
-//import com.itextpdf.text.Document;
-//import com.itextpdf.text.DocumentException;
-//import com.itextpdf.text.PageSize;
-//import com.itextpdf.text.Paragraph;
-//import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
 import gui.Orcamento;
 import gui.OrcamentoAtualizar;
 import gui.Router;
@@ -164,8 +164,8 @@ public class OrcamentoController {
     
     private void exportarPDF(){
         
-        //Não conseguimos usar Nenhuma das apis de gerador de boletos
-        /*Document orcamento=new Document(PageSize.A4);
+        
+        Document orcamento=new Document(PageSize.A4);
                     
         try {
             PdfWriter.getInstance(orcamento, new FileOutputStream("Orçamento.pdf"));
@@ -191,6 +191,6 @@ public class OrcamentoController {
         }finally{
             orcamento.close();
         }
-        */
+        
     }
 }
